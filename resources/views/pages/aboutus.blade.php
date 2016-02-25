@@ -6,6 +6,13 @@
 
 @stop
 
+@section('uri')
+    aboutus
+@stop
+
+@section('title')
+    About us
+@stop
 
 @section('active-aboutus')
     "active"

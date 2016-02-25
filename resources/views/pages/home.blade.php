@@ -1,5 +1,12 @@
 @extends('app')
 
+@section('title')
+    Home
+@stop
+
+@section('uri')
+    home
+@stop
 
 @section('content')
     <h1>Welcome {{ $user }} </h1>

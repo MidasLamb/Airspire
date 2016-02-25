@@ -17,58 +17,9 @@ use Illuminate\Support\Facades\Redirect;
 class PagesController extends Controller
 {
 
-
-
-    public function test(){
-      if (!session_id()) {
-          session_start();
-      }
-
-        $data = [
-          'title' => "Events",
-
-        ];
-
-        if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()) {
-            $response = $this->getFBUser();
-            $data['user'] = $response['name'];
-            $data['image'] = $response['picture']['url'];
-            $data['loggedin'] = true;
-
-            $fb = PagesController::getFB();
-
-            try {
-                    // Returns a `Facebook\FacebookResponse` object
-                    $response = $fb->get('/me/feed', $_SESSION['fb_access_token']);
-
-                    $graphEdge = $response->getGraphEdge();
-                    foreach ($graphEdge as $graphNode) {
-                      var_dump($graphNode);
-                    }
-
-                } catch (Exceptions\FacebookResponseException $e) {
-                    echo 'Graph returned an error: ' . $e->getMessage();
-                    if ($e->getCode() == 190) {
-                        //acces token expired.
-                    } else {
-                    }
-                    exit;
-                } catch (Exceptions\FacebookSDKException $e) {
-                    echo 'Facebook SDK returned an error: ' . $e->getMessage();
-                    exit;
-                }
-
-        } else {
-            $data['user'] = '';
-            $data['image'] = '';
-            $data['loggedin'] = false;
-        }
-        return view('pages/test')->with($data);
-    }
-
     public function welcome(){
 
-        return view('pages/welcome')->with($data);
+        return view('pages/welcome');
     }
     public function events()
     {
@@ -102,9 +53,6 @@ class PagesController extends Controller
         if (!session_id()) {
             session_start();
         }
-
-
-
         $data = [
             'title' => "About us",
 
