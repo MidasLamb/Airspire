@@ -32,6 +32,6 @@ class FBDevAuth
             return $next($request);
           }
       }
-      //return redirect('construction');
+      return redirect('construction');
     }
 }
