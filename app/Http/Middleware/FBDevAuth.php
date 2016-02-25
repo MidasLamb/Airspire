@@ -28,12 +28,13 @@ class FBDevAuth
           try{
             $testUser = DB::table('users')->select('test_user')->where('fb_id', '=', $fbid)->first();
 
-            var_dump($testUser);
-            $isTestUser = $testUser->test_user;
+            if ($testUser != NULL){
+              $isTestUser = $testUser->test_user;
 
-            if ($isTestUser){
-              //Allow acces:
-              return $next($request);
+              if ($isTestUser){
+                //Allow acces:
+                return $next($request);
+              }
             }
           } catch (Exception $e){
 
