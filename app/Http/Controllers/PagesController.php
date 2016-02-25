@@ -289,7 +289,7 @@ class PagesController extends Controller
         return $fb;
     }
 
-    private static function isValidAccessToken(){
+    public static function isValidAccessToken(){
         if (!session_id()) {
             throw new Exception('Session not started.');
         }

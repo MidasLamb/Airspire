@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{ $Ploegnaam }}</title>
+        <title>Airspire</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -89,8 +89,8 @@
 
         <div class="container">
             <div class="content">
-                <div class="title" id="title" >{{ $Ploegnaam }}</div>
-                <div class="subtitle" id="subtitle">Click to continue</div>
+                <div class="title" id="title" >Airspire</div>
+                <div class="subtitle" id="subtitle">Click anywhere to continue</div>
             </div>
         </div>
 

@@ -13,28 +13,54 @@
 
 //Dev reroute route
 
-//Route::get('Construction', functi);
+use App\Http\Controllers\PagesController;
+use App\Http\Requests;
+use App\User;
+use Facebook\Facebook;
+use Facebook\Exceptions;
+use Illuminate\Support\Facades\Redirect;
+use PhpSpec\Exception\Exception;
+use App\Exceptions\Handler;
+
+Route::get('construction', function(){
 
 
-Route::get('/','PagesController@welcome');
+  if (!session_id()) {
+      session_start();
+  }
 
-Route::get('events', 'PagesController@events');
+
+
+  if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()) {
+      $response = PagesController::getFBUser();
+      $data['loggedin'] = true;
+  } else {
+      $data['loggedin'] = false;
+  }
+
+  return view('dev')->with($data);
+});
+
+
+Route::get('/','PagesController@welcome')->middleware(['auth.dev']);
+
+Route::get('events', 'PagesController@events')->middleware(['auth.dev']);
 
 Route::get('login/{page}', 'AuthController@login');
 //
 //Route::get('loginFallback', 'AuthController@loginFallback');
 
-Route::get('logout/{page}', 'AuthController@logout');
+Route::get('logout/{page}', 'AuthController@logout')->middleware(['auth.dev']);
 
-Route::get('test', 'PagesController@test');
+Route::get('test', 'PagesController@test')->middleware(['auth.dev']);
 
-Route::get('home', 'PagesController@home');
+Route::get('home', 'PagesController@home')->middleware(['auth.dev']);
 
-Route::get('aboutus', 'PagesController@aboutus');
+Route::get('aboutus', 'PagesController@aboutus')->middleware(['auth.dev']);
 
 //QR Code:
 
-Route::get('QRCode', 'PagesController@QRCode');
+Route::get('QRCode', 'PagesController@QRCode')->middleware(['auth.dev']);
 
 Route::post('eventattendeces',['middleware' => 'auth.quick', 'uses' => 'DBController@store']);
 

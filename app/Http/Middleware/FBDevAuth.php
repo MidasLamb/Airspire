@@ -3,6 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Request;
+use App\Http\Controllers\PagesController;
+use DB;
 
 class FBDevAuth
 {
@@ -15,6 +18,20 @@ class FBDevAuth
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+      if (!session_id()) {
+          session_start();
+      }
+
+      if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()){
+          $response = PagesController::getFBUser();
+          $fbid = $response['id'];
+          $isTestUser = DB::table('users')->select('test_user')->where('fb_id', '=', $fbid)->first()->test_user;
+
+          if ($isTestUser){
+            //Allow acces:
+            return $next($request);
+          }
+      }
+      //return redirect('construction');
     }
 }
