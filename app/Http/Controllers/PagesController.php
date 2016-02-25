@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Redirect;
 class PagesController extends Controller
 {
 
-    private $Ploegnaam="Ploegnaam";
 
 
     public function test(){
@@ -27,7 +26,6 @@ class PagesController extends Controller
 
         $data = [
           'title' => "Events",
-          'Ploegnaam' => $this->Ploegnaam,
 
         ];
 
@@ -70,10 +68,6 @@ class PagesController extends Controller
 
     public function welcome(){
 
-
-        $data = [
-            'Ploegnaam'   => $this->Ploegnaam
-        ];
         return view('pages/welcome')->with($data);
     }
     public function events()
@@ -86,7 +80,6 @@ class PagesController extends Controller
 
         $data = [
             'title' => "Events",
-            'Ploegnaam' => $this->Ploegnaam,
             'events' => App\Event::all(),
         ];
 
@@ -114,7 +107,6 @@ class PagesController extends Controller
 
         $data = [
             'title' => "About us",
-            'Ploegnaam' => $this->Ploegnaam,
 
         ];
 
@@ -146,7 +138,6 @@ class PagesController extends Controller
                 'user' => $response['name'],
                 'image' => $response['picture']['url'],
                 'loginurl' => $this->makeLoginURL(),
-                'Ploegnaam' => $this->Ploegnaam,
                 'title' => 'home',
 
             ];
@@ -155,7 +146,6 @@ class PagesController extends Controller
                 'loggedin' => false,
                 'user' => "",
                 'image' => "",
-                'Ploegnaam' => $this->Ploegnaam,
                 'loginurl' => $this->makeLoginURL(),
                 'title' => 'home'
                 ];
@@ -169,8 +159,7 @@ class PagesController extends Controller
           session_start();
       }
       $data = [
-        'title' => "Events",
-        'Ploegnaam' => $this->Ploegnaam,
+        'title' => "QRCode",
 
       ];
 

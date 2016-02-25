@@ -25,11 +25,15 @@ class FBDevAuth
       if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()){
           $response = PagesController::getFBUser();
           $fbid = $response['id'];
-          $isTestUser = DB::table('users')->select('test_user')->where('fb_id', '=', $fbid)->first()->test_user;
+          try{
+            $isTestUser = DB::table('users')->select('test_user')->where('fb_id', '=', $fbid)->first()->test_user;
 
-          if ($isTestUser){
-            //Allow acces:
-            return $next($request);
+            if ($isTestUser){
+              //Allow acces:
+              return $next($request);
+            }
+          } catch (Exception $e){
+            
           }
       }
       return redirect('construction');

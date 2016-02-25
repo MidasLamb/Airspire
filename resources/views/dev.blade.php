@@ -58,7 +58,7 @@
                 var element = document.getElementById('fbt');
                 element.innerHTML =  '<li class="dropdown" id="fbd">';
                 element = document.getElementById('fbd');
-                element.innerHTML = '<ul class="dropdown-menu"><li><a href="/QRCode">QR Code</a></li> <li><a href="" onclick="logout()">Logout</a></li></ul> </li>';
+                element.innerHTML = 'You are not recognized as a user, the site is only accessible to certified users.';
             } else {
                 // the user isn't logged in to Facebook or hasn't authenticated the app.
                 //alert("Not Logged in");
@@ -103,7 +103,7 @@
 
 
 
-
+<h2>This site is currently under construction, please log in to continue!</h2>
 <ul class="nav navbar-nav navbar-right" id="fbt">
     <li><fb:login-button data-size="large" scope="public_profile,email,user_friends,user_posts,publish_actions" onlogin="logInWithFacebook();">
         </fb:login-button></li>
