@@ -138,7 +138,7 @@
         FB.login(function(response) {
             if (response.authResponse) {
                 //alert('You are logged in & cookie set!');
-                window.location.replace("/login/".concat("@yield{'uri'}".toLowerCase()));
+                window.location.replace("/login/".concat("der".toLowerCase()));
             } else {
                 alert('User cancelled login or did not fully authorize.');
             }
