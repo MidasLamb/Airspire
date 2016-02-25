@@ -26,7 +26,7 @@ class FBDevAuth
           $response = PagesController::getFBUser();
           $fbid = $response['id'];
           try{
-            $testUser = DB::table('users')->select('test_user')->where('fb_id', '=', $fbid)->first()->test_user;
+            $testUser = DB::table('users')->select('test_user')->where('fb_id', '=', $fbid)->first();
 
             var_dump($testUser);
             $isTestUser = $testUser->test_user;
