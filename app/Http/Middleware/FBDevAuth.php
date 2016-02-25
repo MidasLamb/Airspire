@@ -26,14 +26,17 @@ class FBDevAuth
           $response = PagesController::getFBUser();
           $fbid = $response['id'];
           try{
-            $isTestUser = DB::table('users')->select('test_user')->where('fb_id', '=', $fbid)->first()->test_user;
+            $testUser = DB::table('users')->select('test_user')->where('fb_id', '=', $fbid)->first()->test_user;
+
+            var_dump($testUser);
+            $isTestUser = $testUser->test_user;
 
             if ($isTestUser){
               //Allow acces:
               return $next($request);
             }
           } catch (Exception $e){
-            
+
           }
       }
       return redirect('construction');
