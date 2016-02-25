@@ -1,10 +1,16 @@
 @extends('app')
 
-@section('active-event', '"active"')
+@section('active-event')
+  "active"
+@stop
 
-@section('uri', 'events')
+@section('uri')
+  events
+@stop
 
-@section('title', 'Events')
+@section('title')
+  Events
+@stop
 
 @section('content')
     <h1>Events</h1>
