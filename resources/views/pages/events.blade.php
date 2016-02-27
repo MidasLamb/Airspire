@@ -8,9 +8,7 @@
   events
 @stop
 
-@section('title')
-  Events
-@stop
+{{--*/ $title = 'Events' /*--}}
 
 @section('content')
     <h1>Events</h1>

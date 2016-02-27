@@ -10,9 +10,7 @@
     aboutus
 @stop
 
-@section('title')
-    About us
-@stop
+{{--*/ $title = 'About us' /*--}}
 
 @section('active-aboutus')
     "active"

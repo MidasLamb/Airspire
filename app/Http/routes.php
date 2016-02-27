@@ -14,13 +14,7 @@
 //Dev reroute route
 
 use App\Http\Controllers\PagesController;
-use App\Http\Requests;
-use App\User;
-use Facebook\Facebook;
-use Facebook\Exceptions;
-use Illuminate\Support\Facades\Redirect;
-use PhpSpec\Exception\Exception;
-use App\Exceptions\Handler;
+
 
 Route::get('construction', function(){
 

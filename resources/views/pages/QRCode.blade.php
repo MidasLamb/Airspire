@@ -1,8 +1,6 @@
 @extends('app')
 
-@section('title')
-    QR Code
-@stop
+{{--*/ $title = 'QR Code' /*--}}
 
 @section('uri')
     QRCode

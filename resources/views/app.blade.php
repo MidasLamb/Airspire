@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Airspire| @yield{'title'}</title>
+    <title>Airspire|{{ $title }}</title>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 
     <style>
@@ -21,15 +22,6 @@
         }
 
         /* Set the fixed height of the footer here */
-        #footer {
-            position: relative;
-            bottom: 0px;
-            height: 60px;
-            background-color: #f5f5f5;
-            margin-top:50px;
-            padding-top:20px;
-            padding-bottom:20px;
-        }
 
         @{{ Square navbar }}
         .navbar {
@@ -38,8 +30,8 @@
 
         @{{ Color section }}
         .navbar-default {
-          background-color: #5970b6;
-          border-color: #3f19e3;
+          background-color: #1351b7;
+          border-color: #0f3f8e;
         }
         .navbar-default .navbar-brand {
           color: #ecf0f1;
@@ -62,20 +54,20 @@
         .navbar-default .navbar-nav > .active > a:hover,
         .navbar-default .navbar-nav > .active > a:focus {
           color: #ffffff;
-          background-color: #3f19e3;
+          background-color: #0f3f8e;
         }
         .navbar-default .navbar-nav > .open > a,
         .navbar-default .navbar-nav > .open > a:hover,
         .navbar-default .navbar-nav > .open > a:focus {
           color: #ecdbff;
-          background-color: #3f19e3;
+          background-color: #0f3f8e;
         }
         .navbar-default .navbar-toggle {
-          border-color: #3f19e3;
+          border-color: #0f3f8e;
         }
         .navbar-default .navbar-toggle:hover,
         .navbar-default .navbar-toggle:focus {
-          background-color: #3f19e3;
+          background-color: #0f3f8e;
         }
         .navbar-default .navbar-toggle .icon-bar {
           background-color: #ecf0f1;
@@ -103,7 +95,7 @@
           .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
           .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
             color: #ecdbff;
-            background-color: #3f19e3;
+            background-color: #0f3f8e;
           }
         }
 
@@ -111,9 +103,10 @@
 
         @{{ Sidebar color section }}
 
-        .sidebar-nav-fixed {
-          background-color: #5970b6;
-          border-color: #3f19e3;
+        .well {
+          background-color: #1351b7;
+          border-color: #0f3f8e;
+          color: white;
         }
 
 
@@ -126,7 +119,10 @@
 
 <script>
     var loggedInFB = {{ json_encode($loggedin) }};
-    console.log(loggedInFB);
+
+    var stringref = String(window.location.href);
+    var lastIndex = stringref.lastIndexOf('/');
+    var uri = stringref.substring(lastIndex+1, stringref.length);
 
 </script>
 <!-- FB loading javascript sdk-->
@@ -138,7 +134,7 @@
         FB.login(function(response) {
             if (response.authResponse) {
                 //alert('You are logged in & cookie set!');
-                window.location.replace("/login/".concat("der".toLowerCase()));
+                window.location.replace("/login/".concat(uri));
             } else {
                 alert('User cancelled login or did not fully authorize.');
             }
@@ -182,7 +178,7 @@
       FB.logout(function(response) {
 
       });
-      window.location.replace("/logout/".concat('{{ $title }}'.toLowerCase()));
+      window.location.replace("/logout/".concat(uri));
     }
 
     function logout(){

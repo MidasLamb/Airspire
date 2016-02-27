@@ -1,8 +1,6 @@
 @extends('app')
 
-@section('title')
-    Home
-@stop
+{{--*/ $title = 'Home' /*--}}
 
 @section('uri')
     home
