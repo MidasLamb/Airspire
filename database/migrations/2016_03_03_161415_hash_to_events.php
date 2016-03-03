@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddExcerptToArticlesTable extends Migration
+class HashToEvents extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class AddExcerptToArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::table('events', function (Blueprint $table) {
-            $table->text('excerpt');
-        });
+      Schema::table('events', function ($table) {
+        $table->string('hash', 32)->unique();
+      });
     }
 
     /**
@@ -24,8 +24,8 @@ class AddExcerptToArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::table('events', function (Blueprint $table) {
-            $table->dropColumn('excerpt');
-        });
+      Schema::table('events', function ($table) {
+        $table->dropColumn('hash');
+      });
     }
 }

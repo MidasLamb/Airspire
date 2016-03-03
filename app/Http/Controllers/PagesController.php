@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 
+use DB;
 use App\Http\Requests;
 use App;
 use App\Http\Controllers\Controller;
@@ -21,6 +22,7 @@ class PagesController extends Controller
 
         return view('pages/welcome');
     }
+
     public function events()
     {
         if (!session_id()) {
@@ -124,6 +126,59 @@ class PagesController extends Controller
         $data['loggedin'] = false;
       }
       return view('pages/QRCode')->with($data);
+    }
+
+    /**
+    * First check if user is logged in
+    *  $time should be in seconds, because time() returns seconds.
+    */
+    public function eventAttendence($hash, $time){
+      if (!session_id()) {
+          session_start();
+      }
+
+      if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()) {
+          $response = $this->getFBUser();
+          $data['id'] = $response['id'];
+          $data['user'] = $response['name'];
+          $data['image'] = $response['picture']['url'];
+          $data['loggedin'] = true;
+
+          $currentTime = time();
+          if ($currentTime - $time > 0){
+            $event = DB::table('events')->select('id')->where('hash', '=', $hash)->first();
+            if ($event != null){
+              $eventId = $event->id;
+
+              $searchMatch = DB::table('event_attendences')->where([['user_id', '=', $response['id']],['event_id', '=', $eventId]])->first();
+
+              if ($searchMatch == null){
+                DB::table('event_attendences')->insert(
+                  ['user_id' => $response['id'], 'event_id' => $event_id]
+                );
+                echo "User added";
+              }
+            }
+            echo "event not found";
+
+          }
+
+
+          $data['succes'] = true;
+
+
+      } else {
+        $data['id'] = "";
+        $data['user'] = "";
+        $data['image'] = "";
+        $data['succes'] = false;
+        $data['loggedin'] = false;
+
+        echo "not logged in";
+      }
+
+
+
     }
 
 

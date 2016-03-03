@@ -46,8 +46,6 @@ Route::get('login/{page}', 'AuthController@login');
 
 Route::get('logout/{page}', 'AuthController@logout')->middleware(['auth.dev']);
 
-Route::get('test', 'PagesController@test')->middleware(['auth.dev']);
-
 Route::get('home', 'PagesController@home')->middleware(['auth.dev']);
 
 Route::get('aboutus', 'PagesController@aboutus')->middleware(['auth.dev']);
@@ -57,6 +55,9 @@ Route::get('aboutus', 'PagesController@aboutus')->middleware(['auth.dev']);
 Route::get('QRCode', 'PagesController@QRCode')->middleware(['auth.dev']);
 
 Route::post('eventattendeces',['middleware' => 'auth.quick', 'uses' => 'DBController@store']);
+
+
+Route::get('events/{hash}/{time}', 'PagesController@QRCode')->middleware(['auth.dev']);
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
