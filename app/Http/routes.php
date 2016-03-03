@@ -57,7 +57,7 @@ Route::get('QRCode', 'PagesController@QRCode')->middleware(['auth.dev']);
 Route::post('eventattendeces',['middleware' => 'auth.quick', 'uses' => 'DBController@store']);
 
 
-Route::get('events/{hash}/{time}', 'PagesController@QRCode')->middleware(['auth.dev']);
+Route::get('events/{hash}/{time}', 'PagesController@eventAttendence')->middleware(['auth.dev']);
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
