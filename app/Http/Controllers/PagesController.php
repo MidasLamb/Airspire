@@ -152,10 +152,10 @@ class PagesController extends Controller
               $eventId = $event->id;
               $fb_id = $response['id'];
 
-              $searchMatch = DB::table('event_attendences')->where([
-                ['user_id', '=', $fb_id],
-                ['event_id', '=', $eventId],
-              ])->first();
+              $searchMatch = DB::table('event_attendences')
+                ->where('user_id', '=', $fb_id)
+                ->where('event_id', '=', $eventId])
+                ->first();
 
               if ($searchMatch == null){
                 DB::table('event_attendences')->insert(
