@@ -149,7 +149,7 @@ class PagesController extends Controller
           if ($currentTime - $time > 0){
             $event = DB::table('events')->select('id')->where('hash', '=', $hash)->first();
             if ($event != null){
-              var_dump($eventId);
+              var_dump($event);
               $eventId = $event->id;
               $fb_id = $response['id'];
 
