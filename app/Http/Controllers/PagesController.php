@@ -149,18 +149,17 @@ class PagesController extends Controller
           if ($currentTime - $time > 0){
             $event = DB::table('events')->select('id')->where('hash', '=', $hash)->first();
             if ($event != null){
-              var_dump($event);
               $eventId = $event->id;
-              $fb_id = $response['id'];
+              $fbId = $response['id'];
 
               $searchMatch = DB::table('event_attendences')
-                ->where('user_id', '=', $fb_id)
+                ->where('user_id', '=', $fbId)
                 ->where('event_id', '=', $eventId)
                 ->first();
 
               if ($searchMatch == null){
                 DB::table('event_attendences')->insert(
-                  ['user_id' => $response['id'], 'event_id' => $event_id]
+                  ['user_id' => $fbId, 'event_id' => $eventId]
                 );
                 echo "User added";
               }
