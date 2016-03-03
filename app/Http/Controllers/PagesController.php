@@ -154,7 +154,7 @@ class PagesController extends Controller
 
               $searchMatch = DB::table('event_attendences')
                 ->where('user_id', '=', $fb_id)
-                ->where('event_id', '=', $eventId])
+                ->where('event_id', '=', $eventId)
                 ->first();
 
               if ($searchMatch == null){
