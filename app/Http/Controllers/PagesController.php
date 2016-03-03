@@ -140,6 +140,7 @@ class PagesController extends Controller
       if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()) {
           $response = $this->getFBUser();
           $data['id'] = $response['id'];
+
           $data['user'] = $response['name'];
           $data['image'] = $response['picture']['url'];
           $data['loggedin'] = true;
@@ -149,8 +150,12 @@ class PagesController extends Controller
             $event = DB::table('events')->select('id')->where('hash', '=', $hash)->first();
             if ($event != null){
               $eventId = $event->id;
+              $fb_id = $response['id'];
 
-              $searchMatch = DB::table('event_attendences')->where([['user_id', '=', $response['id']],['event_id', '=', $eventId]])->first();
+              $searchMatch = DB::table('event_attendences')->where([
+                ['user_id', '=', $fb_id],
+                ['event_id', '=', $eventId],
+              ])->first();
 
               if ($searchMatch == null){
                 DB::table('event_attendences')->insert(
