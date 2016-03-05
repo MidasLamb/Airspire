@@ -157,6 +157,8 @@
         });
 
         checkLogin();
+        @yield('fb_functions')
+
     };
 
     function checkLogin() {
@@ -223,7 +225,7 @@
     }(document, "script", "twitter-wjs"));
 </script>
 
-
+@yield('js_script')
 
 
 

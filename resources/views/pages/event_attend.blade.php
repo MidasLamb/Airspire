@@ -9,10 +9,13 @@
 
 {{--*/ $title = 'Event attendence' /*--}}
 
-@section('content')
+@section{'fb_functions'}
+  share();
+@stop
+@section('js_function')
 <script>
-FB.ui({
-  method: 'feed',
+function share() = FB.ui({
+  method: 'share',
   link: 'https://developers.facebook.com/docs/',
   caption: 'An example caption',
 }, function(response){});
