@@ -184,7 +184,7 @@ class PagesController extends Controller
         echo "not logged in";
       }
 
-      return view('pages/event_attend')->with($data)
+      return view('pages/event_attend')->with($data);
 
     }
 
