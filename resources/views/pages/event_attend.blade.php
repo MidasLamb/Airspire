@@ -9,9 +9,10 @@
 
 {{--*/ $title = 'Event attendence' /*--}}
 
-@section{'fb_functions'}
+@section('fb_functions')
   share();
 @stop
+
 @section('js_function')
 <script>
 function share() = FB.ui({
