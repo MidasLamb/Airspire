@@ -13,7 +13,7 @@
   share();
 @stop
 
-@section('js_function')
+@section('js_script')
 <script>
 function share() = FB.ui({
   method: 'share',
