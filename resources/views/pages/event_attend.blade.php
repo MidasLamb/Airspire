@@ -15,10 +15,12 @@
 
 @section('js_script')
 <script>
-function share() = FB.ui({
+function share(){
+  FB.ui({
   method: 'share',
   link: 'https://developers.facebook.com/docs/',
   caption: 'An example caption',
-}, function(response){});
+  }, function(response){});
+}
 </script>
 @stop
