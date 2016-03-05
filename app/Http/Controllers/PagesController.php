@@ -137,6 +137,8 @@ class PagesController extends Controller
           session_start();
       }
 
+      $data['uri'] = 'events/'.$hash.'/'.$time;
+
       if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()) {
           $response = $this->getFBUser();
           $data['id'] = $response['id'];
@@ -182,7 +184,7 @@ class PagesController extends Controller
         echo "not logged in";
       }
 
-
+      return view('pages/event_attend')->with($data)
 
     }
 
