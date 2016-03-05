@@ -17,7 +17,7 @@
 <script>
 function share(){
   FB.ui({
-  method: 'share',
+  method: 'feed',
   link: 'https://developers.facebook.com/docs/',
   caption: 'An example caption',
   }, function(response){});
