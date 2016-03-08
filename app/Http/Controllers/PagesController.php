@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Tracker;
 use Illuminate\Http\Request;
 
 use DB;
@@ -17,115 +18,65 @@ use Illuminate\Support\Facades\Redirect;
 
 class PagesController extends Controller
 {
+    private static $data;
 
-    public function welcome(){
+    public function welcome()
+    {
+        Tracker::hit("welcome");
 
         return view('pages/welcome');
+
+    }
+
+    public function pasport()
+    {
+      Tracker::hit("pasport");
+      PagesController::fillData();
+
+      return view('pages/pasport')->with($this->data);
     }
 
     public function events()
     {
-        if (!session_id()) {
-            session_start();
-        }
 
+        Tracker::hit("events");
+        PagesController::fillData();
 
+        $this->data['events'] = App\Event::all();
 
-        $data = [
-            'title' => "Events",
-            'events' => App\Event::all(),
-        ];
-
-        if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()) {
-            $response = $this->getFBUser();
-            $data['user'] = $response['name'];
-            $data['image'] = $response['picture']['url'];
-            $data['loggedin'] = true;
-        } else {
-            $data['user'] = '';
-            $data['image'] = '';
-            $data['loggedin'] = false;
-        }
-
-        return view('pages/events')->with($data);
+        return view('pages/events')->with($this->data);
     }
 
     public function aboutus()
     {
-        if (!session_id()) {
-            session_start();
-        }
-        $data = [
-            'title' => "About us",
+        Tracker::hit("aboutus");
+        PagesController::fillData();
 
-        ];
+        return view('pages/aboutus')->with($this->data);
+    }
 
-        if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()) {
-            $response = $this->getFBUser();
-            $data['user'] = $response['name'];
-            $data['image'] = $response['picture']['url'];
-            $data['loggedin'] = true;
-        } else {
-            $data['user'] = '';
-            $data['image'] = '';
-            $data['loggedin'] = false;
-        }
+    public function media()
+    {
+        Tracker::hit("media");
+        PagesController::fillData();
 
-        return view('pages/aboutus')->with($data);
+        return view('pages/media/media')->with($this->data);
     }
 
 
     public function home()
     {
-        if (!session_id()) {
-            session_start();
-        }
+        Tracker::hit("home");
+        PagesController::fillData();
 
-        if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()){
-            $response = $this->getFBUser();
-            $data = [
-                'loggedin' => true,
-                'user' => $response['name'],
-                'image' => $response['picture']['url'],
-                'loginurl' => $this->makeLoginURL(),
-                'title' => 'home',
-
-            ];
-        } else {
-            $data = [
-                'loggedin' => false,
-                'user' => "",
-                'image' => "",
-                'loginurl' => $this->makeLoginURL(),
-                'title' => 'home'
-                ];
-        }
-
-        return view('pages/home')->with($data);
+        return view('pages/home')->with($this->data);
     }
 
     public function QRCode(){
-      if (!session_id()) {
-          session_start();
-      }
-      $data = [
-        'title' => "QRCode",
+      Tracker::hit("QRCode");
+      PagesController::fillData(array('id'));
 
-      ];
-
-      if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()) {
-          $response = $this->getFBUser();
-          $data['id'] = $response['id'];
-          $data['user'] = $response['name'];
-          $data['image'] = $response['picture']['url'];
-          $data['loggedin'] = true;
-      } else {
-        $data['id'] = "";
-        $data['user'] = "";
-        $data['image'] = "";
-        $data['loggedin'] = false;
-      }
-      return view('pages/QRCode')->with($data);
+      return view('pages/QRCode')->with($this->data);
     }
 
     /**
@@ -137,19 +88,19 @@ class PagesController extends Controller
           session_start();
       }
 
-      $data['uri'] = 'events/'.$hash.'/'.$time;
+      Tracker::hit("eventAttendence");
+      PagesController::fillData(array('id'));
 
-      if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()) {
-          $response = $this->getFBUser();
-          $data['id'] = $response['id'];
+      $this->data['uri'] = 'events/'.$hash.'/'.$time;
 
-          $data['user'] = $response['name'];
-          $data['image'] = $response['picture']['url'];
-          $data['loggedin'] = true;
-
+      if($this->data['loggedin']) {
           $currentTime = time();
           if ($currentTime - $time > 0){
-            $event = DB::table('events')->select('id')->where('hash', '=', $hash)->first();
+            $event = DB::table('events')
+              ->select('id')
+              ->where('hash', '=', $hash)
+              ->first();
+
             if ($event != null){
               $eventId = $event->id;
               $fbId = $response['id'];
@@ -160,14 +111,14 @@ class PagesController extends Controller
                 ->first();
 
               if ($searchMatch == null){
-                DB::table('event_attendences')->insert(
-                  ['user_id' => $fbId, 'event_id' => $eventId]
-                );
-                echo "User added";
+                DB::table('event_attendences')
+                  ->insert(['user_id' => $fbId, 'event_id' => $eventId]);
               }
             }
-            echo "event not found";
 
+
+          } else {
+            // Time difference is too big
           }
 
 
@@ -175,16 +126,10 @@ class PagesController extends Controller
 
 
       } else {
-        $data['id'] = "";
-        $data['user'] = "";
-        $data['image'] = "";
-        $data['succes'] = false;
-        $data['loggedin'] = false;
 
-        echo "not logged in";
       }
 
-      return view('pages/event_attend')->with($data);
+      return view('pages/event_attend')->with($this->data);
 
     }
 
@@ -290,7 +235,7 @@ class PagesController extends Controller
 
     public static function isValidAccessToken(){
         if (!session_id()) {
-            throw new Exception('Session not started.');
+            session_start();
         }
 
         if (!isset($_SESSION['fb_access_token'])){
@@ -319,6 +264,31 @@ class PagesController extends Controller
         }
 
         return true;
+    }
+
+    public static function fillData($extras = null){
+
+      if(PagesController::isValidAccessToken()) {
+          $response = PagesController::getFBUser();
+          PagesController::$data['user'] = $response['name'];
+          PagesController::$data['image'] = $response['picture']['url'];
+          PagesController::$data['loggedin'] = true;
+          if (isset($extras)){
+            foreach($extras as $extra){
+              PagesController::$data[$extra] = $response[$extra];
+            }
+          }
+
+      } else {
+          PagesController::$data['user'] = '';
+          PagesController::$data['image'] = '';
+          PagesController::$data['loggedin'] = false;
+
+      }
+    }
+
+    public static function getData(){
+      return PagesController::$data;
     }
 
     private function makeLoginURL(){

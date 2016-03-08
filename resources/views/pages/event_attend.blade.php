@@ -1,11 +1,5 @@
-
-
 @extends('app')
 
-
-@section('uri')
-  {{ $uri }}
-@stop
 
 {{--*/ $title = 'Event attendence' /*--}}
 
@@ -17,10 +11,15 @@
 <script>
 function share(){
   FB.ui({
-  method: 'feed',
-  link: 'https://developers.facebook.com/docs/',
+  method: 'share',
+  href: 'https://developers.facebook.com/docs/',
   caption: 'An example caption',
+  display: 'page',
   }, function(response){});
 }
 </script>
+@stop
+
+@section('content')
+
 @stop

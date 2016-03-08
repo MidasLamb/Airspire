@@ -36,9 +36,18 @@ Route::get('construction', function(){
 });
 
 
+
 Route::get('/','PagesController@welcome')->middleware(['auth.dev']);
 
+//Events --------------------------------------------------------------
+
 Route::get('events', 'PagesController@events')->middleware(['auth.dev']);
+
+//Pasport --------------------------------------------------------------
+
+Route::get('pasport', 'PagesController@pasport')->middleware(['auth.dev']);
+
+//Login ------------------------------------------------------------
 
 Route::get('login/{page}', 'AuthController@login');
 //
@@ -46,11 +55,14 @@ Route::get('login/{page}', 'AuthController@login');
 
 Route::get('logout/{page}', 'AuthController@logout')->middleware(['auth.dev']);
 
+//Info pages -------------------------------------------------------
+
 Route::get('home', 'PagesController@home')->middleware(['auth.dev']);
 
 Route::get('aboutus', 'PagesController@aboutus')->middleware(['auth.dev']);
 
-//QR Code:
+
+//QR Code --------------------------------------------------------------
 
 Route::get('QRCode', 'PagesController@QRCode')->middleware(['auth.dev']);
 
@@ -58,6 +70,21 @@ Route::post('eventattendeces',['middleware' => 'auth.quick', 'uses' => 'DBContro
 
 
 Route::get('events/{hash}/{time}', 'PagesController@eventAttendence')->middleware(['auth.dev']);
+
+
+//Albums ---------------------------------------------------------------
+Route::get('/media', array('as' => 'index','uses' => 'AlbumsController@getList'));
+Route::get('/media/createalbum', array('as' => 'create_album_form','uses' => 'AlbumsController@getForm'));
+Route::post('/media/createalbum', array('as' => 'create_album','uses' => 'AlbumsController@postCreate'));
+Route::get('/media/deletealbum/{id}', array('as' => 'delete_album','uses' => 'AlbumsController@getDelete'));
+Route::get('/media/album/{id}', array('as' => 'show_album','uses' => 'AlbumsController@getAlbum'));
+
+Route::get('/media/addimage/{id}', array('as' => 'add_image','uses' => 'ImageController@getForm'));
+Route::post('/media/addimage', array('as' => 'add_image_to_album','uses' => 'ImageController@postAdd'));
+Route::get('/media/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImageController@getDelete'));
+
+Route::post('/media/moveimage', array('as' => 'move_image', 'uses' => 'ImageController@postMove'));
+
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
