@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Album;
-
+use App\Tracker;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -17,6 +17,7 @@ class AlbumsController extends Controller
 
   public function getList()
   {
+    Tracker::hit("media/index");
     PagesController::fillData();
     $data = PagesController::getData();
 
@@ -26,8 +27,10 @@ class AlbumsController extends Controller
   }
   public function getAlbum($id)
   {
-    PagesController::fillData();
+    Tracker::hit("media/album");
+    PagesController::fillData(array('id'));
     $data = PagesController::getData();
+    $data['isDev'] = PagesController::isDeveloper($data['id']);
 
     $album = Album::with('Photos')->find($id);
     $albumsMod = Album::where('id', '<>', $id)->get();
@@ -39,6 +42,7 @@ class AlbumsController extends Controller
   }
   public function getForm()
   {
+    Tracker::hit("media/createalbum");
     PagesController::fillData();
     $data = PagesController::getData();
 

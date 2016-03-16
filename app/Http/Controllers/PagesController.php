@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App;
+use App\Event;
 use App\Http\Controllers\Controller;
 use Facebook\Facebook;
 use Facebook\Exceptions;
@@ -28,31 +29,16 @@ class PagesController extends Controller
 
     }
 
-    public function pasport()
-    {
-      Tracker::hit("pasport");
-      PagesController::fillData();
 
-      return view('pages/pasport')->with($this->data);
-    }
 
-    public function events()
-    {
 
-        Tracker::hit("events");
-        PagesController::fillData();
-
-        $this->data['events'] = App\Event::all();
-
-        return view('pages/events')->with($this->data);
-    }
 
     public function aboutus()
     {
         Tracker::hit("aboutus");
         PagesController::fillData();
 
-        return view('pages/aboutus')->with($this->data);
+        return view('pages/aboutus')->with(PagesController::$data);
     }
 
     public function media()
@@ -60,78 +46,50 @@ class PagesController extends Controller
         Tracker::hit("media");
         PagesController::fillData();
 
-        return view('pages/media/media')->with($this->data);
+        return view('pages/media/media')->with(PagesController::$data);
     }
 
 
     public function home()
     {
         Tracker::hit("home");
-        PagesController::fillData();
+        PagesController::fillData(array('id'));
+        $data = PagesController::getData();
 
-        return view('pages/home')->with($this->data);
+        //
+        $data['upcoming_events'] = Event::where('started_at', '>', date('Y-m-d   H:i:s'))->get();
+
+        $data['passed_events'] = Event::where('ended_at', '<', date('Y-m-d   H:i:s'))->get();
+
+        $data['active_events'] = Event::where('started_at', '<', date('Y-m-d   H:i:s'))->where('ended_at', '>', date('Y-m-d   H:i:s'))->get();
+
+
+        if ($data['loggedin']){
+          $data['attended_events'] = DB::table('events')
+              ->join('event_attendences', 'events.id', '=', 'event_attendences.event_id')
+              ->select('title', 'country_name', 'country_flag')
+              ->where('user_id', '=', $data['id'])
+              ->orderBy('ended_at', 'desc')
+              ->get();
+
+
+
+          $data['nb_attended_events'] = count($data['attended_events']);
+        }
+        $data['nb_passed_events'] = count($data['passed_events']);
+
+
+        return view('pages/home')->with($data);
     }
 
     public function QRCode(){
       Tracker::hit("QRCode");
       PagesController::fillData(array('id'));
 
-      return view('pages/QRCode')->with($this->data);
+      return view('pages/QRCode')->with(PagesController::$data);
     }
 
-    /**
-    * First check if user is logged in
-    *  $time should be in seconds, because time() returns seconds.
-    */
-    public function eventAttendence($hash, $time){
-      if (!session_id()) {
-          session_start();
-      }
 
-      Tracker::hit("eventAttendence");
-      PagesController::fillData(array('id'));
-
-      $this->data['uri'] = 'events/'.$hash.'/'.$time;
-
-      if($this->data['loggedin']) {
-          $currentTime = time();
-          if ($currentTime - $time > 0){
-            $event = DB::table('events')
-              ->select('id')
-              ->where('hash', '=', $hash)
-              ->first();
-
-            if ($event != null){
-              $eventId = $event->id;
-              $fbId = $response['id'];
-
-              $searchMatch = DB::table('event_attendences')
-                ->where('user_id', '=', $fbId)
-                ->where('event_id', '=', $eventId)
-                ->first();
-
-              if ($searchMatch == null){
-                DB::table('event_attendences')
-                  ->insert(['user_id' => $fbId, 'event_id' => $eventId]);
-              }
-            }
-
-
-          } else {
-            // Time difference is too big
-          }
-
-
-          $data['succes'] = true;
-
-
-      } else {
-
-      }
-
-      return view('pages/event_attend')->with($this->data);
-
-    }
 
 
     /**
@@ -191,7 +149,7 @@ class PagesController extends Controller
             throw new Exception('No access token set.');
         }
 
-    $fb = $this->getFB();
+    $fb = PagesController::$getFB();
 
 
 
@@ -267,7 +225,6 @@ class PagesController extends Controller
     }
 
     public static function fillData($extras = null){
-
       if(PagesController::isValidAccessToken()) {
           $response = PagesController::getFBUser();
           PagesController::$data['user'] = $response['name'];
@@ -283,8 +240,27 @@ class PagesController extends Controller
           PagesController::$data['user'] = '';
           PagesController::$data['image'] = '';
           PagesController::$data['loggedin'] = false;
-
+          if (isset($extras)){
+            foreach($extras as $extra){
+              PagesController::$data[$extra] = '';
+            }
+          }
       }
+    }
+
+    public static function isDeveloper($fbId){
+      return false;
+      $testUser = DB::table('users')->select('test_user')->where('fb_id', '=', $fbId)->first();
+
+      if ($testUser != NULL){
+        $isTestUser = $testUser->test_user;
+
+        if ($isTestUser){
+          //Allow acces:
+          return true;
+        }
+      }
+      return false;
     }
 
     public static function getData(){

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Album;
+use App\Tracker;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -14,6 +15,21 @@ use App\Image;
 
 class ImageController extends Controller
 {
+  public function getImage($id)
+  {
+    Tracker::hit("media/image/".$id);
+    PagesController::fillData(array('id'));
+    $data = PagesController::getData();
+    $data['isDev'] = PagesController::isDeveloper($data['id']);
+
+    $image = Image::find($id);
+    $data['photo'] = $image->image;
+
+
+    return view('pages/media/image')
+    ->with($data);
+  }
+
   public function getForm($id)
   {
     PagesController::fillData();

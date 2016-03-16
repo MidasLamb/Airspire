@@ -41,11 +41,12 @@ Route::get('/','PagesController@welcome')->middleware(['auth.dev']);
 
 //Events --------------------------------------------------------------
 
-Route::get('events', 'PagesController@events')->middleware(['auth.dev']);
+Route::get('events', 'EventsController@events')->middleware(['auth.dev']);
+Route::get('events/{id}', array('as' => 'event','uses' =>'EventsController@event'))->middleware(['auth.dev']);
 
 //Pasport --------------------------------------------------------------
 
-Route::get('pasport', 'PagesController@pasport')->middleware(['auth.dev']);
+Route::get('pasport', 'EventsController@pasport')->middleware(['auth.dev']);
 
 //Login ------------------------------------------------------------
 
@@ -69,7 +70,7 @@ Route::get('QRCode', 'PagesController@QRCode')->middleware(['auth.dev']);
 Route::post('eventattendeces',['middleware' => 'auth.quick', 'uses' => 'DBController@store']);
 
 
-Route::get('events/{hash}/{time}', 'PagesController@eventAttendence')->middleware(['auth.dev']);
+Route::get('events/{hash}/{time}', 'EventsController@eventAttendence')->middleware(['auth.dev']);
 
 
 //Albums ---------------------------------------------------------------
@@ -82,6 +83,7 @@ Route::get('/media/album/{id}', array('as' => 'show_album','uses' => 'AlbumsCont
 Route::get('/media/addimage/{id}', array('as' => 'add_image','uses' => 'ImageController@getForm'));
 Route::post('/media/addimage', array('as' => 'add_image_to_album','uses' => 'ImageController@postAdd'));
 Route::get('/media/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImageController@getDelete'));
+Route::get('/media/image/{id}', array('as' => 'show_image','uses' => 'ImageController@getImage'));
 
 Route::post('/media/moveimage', array('as' => 'move_image', 'uses' => 'ImageController@postMove'));
 

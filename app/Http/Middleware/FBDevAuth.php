@@ -18,6 +18,7 @@ class FBDevAuth
      */
     public function handle($request, Closure $next)
     {
+      return $next($request);
       if (!session_id()) {
           session_start();
       }

@@ -16,7 +16,11 @@
     @if (count($events) > 0)
     <ul>
     @foreach($events as $event)
-        <li><h3>{{ $event->title }}</h3>{{ $event->description }}</li>
+      <a href="{{URL::route('event',array('id'=>$event->id))}}">
+        <div class="thumbnail">
+          <li><h3>{{ $event->title }}</h3>{{ $event->description }}</li>
+        </div>
+      </a>
     @endforeach
     </ul>
     @else

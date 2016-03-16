@@ -89,7 +89,7 @@
 
         <div class="container">
             <div class="content">
-                <div class="title" id="title" >Airspire</div>
+                <div class="title" id="title" ><img src='/images/Airspire_wit.png' style="max-width: 50%;"></div>
                 <div class="subtitle" id="subtitle">Click anywhere to continue</div>
             </div>
         </div>

@@ -153,7 +153,7 @@
             cookie     : true,  // enable cookies to allow the server to access
                                 // the session
             xfbml      : true,  // parse social plugins on this page
-            version    : 'v2.2' // use version 2.2
+            version    : 'v2.5' // use version 2.2
         });
 
         checkLogin();
@@ -240,7 +240,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/home"> Airspire </a>
+            <a class="navbar-brand" href="/home"> <img src='/images/Airspire2.svg' style="max-width: 92px; max-height: 50px; margin-top: -15px;"> </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -248,7 +248,9 @@
             <ul class="nav navbar-nav">
                 <li class=@yield('active-home')><a href="/home"> Home <span class="sr-only">(current)</span></a></li>
                 <li class=@yield('active-event')><a href="/events">Events</a></li>
+                @if($loggedin)
                 <li class=@yield('active-pasport')><a href="/pasport">Pasport</a></li>
+                @endif
                 <li class=@yield('active-media')><a href="/media">Media</a></li>
                 <li class=@yield('active-aboutus')><a href="/aboutus">About us</a></li>
                 <li class="dropdown">
@@ -265,7 +267,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" id="fbt">
-                <li><fb:login-button data-size="large" scope="public_profile,email,user_friends,user_posts,publish_actions" onlogin="logInWithFacebook();">
+                <li><fb:login-button data-size="xlarge" scope="public_profile,email,user_friends,user_posts,publish_actions" onlogin="logInWithFacebook();">
                     </fb:login-button></li>
                 </li>
             </ul>
