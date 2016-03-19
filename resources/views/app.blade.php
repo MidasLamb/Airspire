@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Airspire|{{ $title }}</title>
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="http://midas.ulyssis.be/favicon.ico">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
