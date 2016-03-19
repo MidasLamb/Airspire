@@ -240,6 +240,9 @@ class PagesController extends Controller
           PagesController::$data['user'] = '';
           PagesController::$data['image'] = '';
           PagesController::$data['loggedin'] = false;
+          
+          unset($_SESSION['fb_access_token']);
+
           if (isset($extras)){
             foreach($extras as $extra){
               PagesController::$data[$extra] = '';

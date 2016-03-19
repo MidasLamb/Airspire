@@ -13,7 +13,7 @@
   </div>
   <div class="thumbnail">
     <div class="row">
-      <h3 style="margin-left: 20px; margin-top: 10px;">Aankomende evenementen:</h3>
+      <h3 style="margin-left: 20px; margin-top: 10px;">Actieve evenementen:</h3>
     </div>
     <div class="row">
       @foreach($active_events as $event)

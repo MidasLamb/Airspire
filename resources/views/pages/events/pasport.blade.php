@@ -15,6 +15,9 @@
 @stop
 
 @section('content')
+  <div>
+    <h1>Jouw Paspoort</h1>
+  </div>
   <div class="row">
     @foreach($events as $event)
       <a href="{{URL::route('event',array('id'=>$event->id))}}">

@@ -30,6 +30,16 @@ class ImageController extends Controller
     ->with($data);
   }
 
+  public function indiImage($id)
+  {
+
+    echo "lol";
+    $id = DB::table('images')->select('id')->where('image', '=', $id)->first();
+
+
+    return ImageController::getImage($id);
+  }
+
   public function getForm($id)
   {
     PagesController::fillData();

@@ -35,10 +35,17 @@ class FBDevAuth
             if ($isTestUser){
               //Allow acces:
               return $next($request);
+            } else {
+              echo "You are not allowed";
             }
+          } else{
+            echo "User does not exist in database";
           }
 
+      } else {
+        echo "Not a valid token";
       }
-      return redirect('construction');
+
+      //return redirect('construction');
     }
 }

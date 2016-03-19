@@ -28,7 +28,7 @@
 
 
           <div class="thumbnail" onclick="openNav( {{ $key }})" style="max-height: 350px;">
-            <img alt="{{$name}}" src="/albums/{{$photo['image']}}" style="max-height: 150px;">
+            <img class = "image" alt="{{$name}}" src="/albums/{{$photo['image']}}" style="max-height: 150px;">
             <div class="caption">
               <p>{{$photo['description']}}</p>
               <p>Created date:  {{ date("d F Y",strtotime($photo['created_at'])) }} at {{ date("g:ha",strtotime($photo['created_at'])) }}</p>
@@ -179,6 +179,11 @@ if(window.location.hash) {
 
 @section('css')
 html, body { height: 100%; }
+
+.image:hover {
+  cursor: pointer;
+  cursor: hand;
+}
 
 /* The Overlay (background) */
 .overlay {

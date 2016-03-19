@@ -87,6 +87,8 @@ Route::get('/media/image/{id}', array('as' => 'show_image','uses' => 'ImageContr
 
 Route::post('/media/moveimage', array('as' => 'move_image', 'uses' => 'ImageController@postMove'));
 
+Route::get('/albums/{id}', array('as' => 'indi','uses' => 'ImageController@indiImage'));
+
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
