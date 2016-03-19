@@ -43,7 +43,11 @@ class FBDevAuth
           }
 
       } else {
-        echo "Not a valid token";
+        if (!isset($_SESSION['fb_access_token'])){
+          echo "Token not set";
+        } else {
+          echo "Not a valid token";
+        }
       }
 
       //return redirect('construction');
