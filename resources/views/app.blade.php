@@ -232,7 +232,7 @@
 
 
 
-
+{{ asset('icons/favicon.ico') }}
 
 
 <nav class="navbar navbar-default">
