@@ -15,7 +15,6 @@
 
 <script>
     var loggedInFB = {{ json_encode($loggedin) }};
-    console.log(loggedInFB);
 
 </script>
 <!-- FB loading javascript sdk-->
@@ -105,7 +104,7 @@
 
 <h2>This site is currently under construction, please log in to continue!</h2>
 <ul class="nav navbar-nav navbar-right" id="fbt">
-    <li><fb:login-button data-size="large" scope="public_profile,email,user_friends,user_posts,publish_actions" onlogin="logInWithFacebook();">
+    <li><fb:login-button data-size="large" scope="public_profile,email,user_friends" onlogin="logInWithFacebook();">
         </fb:login-button></li>
     </li>
 </ul>
