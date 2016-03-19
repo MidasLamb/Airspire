@@ -249,7 +249,7 @@ class PagesController extends Controller
     }
 
     public static function isDeveloper($fbId){
-      return false;
+      //return false;
       $testUser = DB::table('users')->select('test_user')->where('fb_id', '=', $fbId)->first();
 
       if ($testUser != NULL){

@@ -36,6 +36,7 @@ class AlbumsController extends Controller
     $albumsMod = Album::where('id', '<>', $id)->get();
     $others = $albumsMod->toArray();
     $data = array_merge($data, $album->toArray());
+    $data['nb_photos'] = count($data['photos']);
     $data['albums'] = $others;
     return view('pages/media/album')
     ->with($data);

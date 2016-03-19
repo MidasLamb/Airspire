@@ -25,8 +25,9 @@
       <div class="row">
         @foreach($photos as $key => $photo)
         <div class="col-lg-4">
-          <a href="{{ URL::route('show_image',array('id'=>$photo['id']))}}">
-          <div class="thumbnail" style="max-height: 350px;">
+
+
+          <div class="thumbnail" onclick="openNav( {{ $key }})" style="max-height: 350px;">
             <img alt="{{$name}}" src="/albums/{{$photo['image']}}" style="max-height: 150px;">
             <div class="caption">
               <p>{{$photo['description']}}</p>
@@ -47,48 +48,180 @@
               </form>
             </div>
           </div>
-          </a>
+
         </div>
         @endforeach
       </div>
 
 
 
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    @foreach($photos as $key => $photo)
-    <li data-target="#carousel-example-generic" data-slide-to="{{$key}}"
-    @if($key == 0)
-    class="active"
-    @endif
-    ></li>
-    @endforeach
-  </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    @foreach($photos as $key => $photo)
-    <div class="item
-    @if($key == 0)
-    active
-    @endif
-    " id= "{{ $key }}">
-    <a href="{{ URL::route('show_image',array('id'=>$photo['id']))}}">
-      <img alt="{{$name}}" src="/albums/{{$photo['image']}}">
+<div id="myNav" class="overlay">
+
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <!-- Overlay content -->
+  <div class="overlay-content">
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false" style="width: 100%; height: 100%;">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        @foreach($photos as $key => $photo)
+        <li data-slide-to="{{$key}}"
+        @if($key == 0)
+        class="active"
+        @endif
+        ></li>
+        @endforeach
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox" style="width: 100%; height: 100%; margin: auto;">
+        @foreach($photos as $key => $photo)
+        <div class="item
+          @if($key == 0)
+          active
+          @endif
+          " id= "{{ $key }}" style="width: 100%; height: 100%;">
+          <a href="{{ URL::route('show_image',array('id'=>$photo['id']))}}">
+            <img alt="{{$name}}" src="/albums/{{$photo['image']}}" style= "max-width: 100%; max-height: 100%; margin: auto;">
+          </a>
+        </div>
+        @endforeach
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
     </a>
     </div>
-    @endforeach
+
   </div>
 
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
+
+@stop
+
+@section('js_script')
+
+
+
+$(document).ready(function(){
+  $("#myCarousel").on('slid.bs.carousel', function () {
+        changeHash(document.getElementsByClassName("item active")[0].id );
+    });
+
+
+  $('.carousel-control.left').click(function() {
+    $('#myCarousel').carousel('prev');
+  });
+
+
+  $('.carousel-control.right').click(function() {
+    $('#myCarousel').carousel('next');
+  });
+
+  $('.carousel-control').click(function(event){
+    event.preventDefault();
+});
+
+});
+
+/* Open when someone clicks on the span element */
+function openNav( id ) {
+    changeHash(id);
+    document.getElementById("myNav").style.height = "100%";
+    document.getElementsByClassName("item active")[0].className = "item";
+    document.getElementById(id).className = "item active";
+}
+
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+    history.pushState("", document.title, window.location.pathname);
+}
+
+function changeHash(hash){
+  window.location.hash = hash;
+
+}
+
+function incrementHash(){
+  if(window.location.hash) {
+    var hash = window.location.hash.substring(1);
+    changeHash(document.getElementsByClassName("item active")[0].id );
+  }
+}
+
+function decrementHash(){
+  if(window.location.hash) {
+    var hash = window.location.hash.substring(1);
+    changeHash( parseInt(changeHash( document.getElementsByClassName("item active")[0].id )) - 1);
+  }
+}
+
+
+@stop
+
+@section('end_js')
+if(window.location.hash) {
+  var hash = window.location.hash.substring(1);
+  openNav(hash);
+}
+@stop
+
+
+@section('css')
+html, body { height: 100%; }
+
+/* The Overlay (background) */
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */
+    height: 0;
+    width: 100%;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+    overflow: hidden;
+    position: relative;
+
+
+    max-width: 100%; /* 100% width */
+    height: 100%;
+
+    margin: auto;
+    text-align: center; /* Centered text/links */
+}
+
+
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.closebtn {
+    position: absolute;
+    z-index:100;
+    top: 20px;
+    right: 45px;
+    font-size: 60px !important; /* Override the font-size specified earlier (36px) for all navigation links */
+}
+
 @stop
