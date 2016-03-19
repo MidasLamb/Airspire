@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class EventWinner extends Migration
+class IndexedFlags extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,10 @@ class EventWinner extends Migration
      */
     public function up()
     {
-        //
+      Schema::table('events', function ($table) {
+          $table->index(['country_name', 'country_flag']);
+
+      });
     }
 
     /**
@@ -22,6 +25,9 @@ class EventWinner extends Migration
      */
     public function down()
     {
-        //
+      Schema::table('events', function ($table) {
+          $table->dropIndex(['country_name', 'country_flag']);
+
+      });
     }
 }
