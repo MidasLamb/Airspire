@@ -51,6 +51,7 @@ Route::get('pasport', 'EventsController@pasport')->middleware(['auth.dev']);
 //Login ------------------------------------------------------------
 
 Route::get('login/{page}', 'AuthController@login');
+Route::post('login/{page}', 'AuthController@loginPost');
 //
 //Route::get('loginFallback', 'AuthController@loginFallback');
 
@@ -66,6 +67,8 @@ Route::get('aboutus', 'PagesController@aboutus')->middleware(['auth.dev']);
 //QR Code --------------------------------------------------------------
 
 Route::get('QRCode', 'PagesController@QRCode')->middleware(['auth.dev']);
+Route::get('QRCode/dev', array('as' => 'DevQRCode','uses' => 'PagesController@devQRCode'));
+Route::get('QRCode/{id}', 'PagesController@developQRCode')->middleware(['auth.dev']);
 
 Route::post('eventattendeces',['middleware' => 'auth.quick', 'uses' => 'DBController@store']);
 

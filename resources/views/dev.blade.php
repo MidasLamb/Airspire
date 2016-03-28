@@ -26,7 +26,12 @@
         FB.login(function(response) {
             if (response.authResponse) {
                 //alert('You are logged in & cookie set!');
-                window.location.replace("/login/home");
+                if (navigator.cookieEnabled){
+                  window.location.replace("/login/home");
+                } else {
+                  document.getElementById("token").setAttribute("value", FB.getAuthResponse()['accessToken']);
+                  document.getElementById("loginForm").submit();
+                }
             } else {
                 alert('User cancelled login or did not fully authorize.');
             }
@@ -108,6 +113,9 @@
         </fb:login-button></li>
     </li>
 </ul>
+{!! Form::open(array('url' => 'login/home', 'id' => 'loginForm')) !!}
+    {{ Form::hidden('token', '', array('id' => 'token'))}}
+{!! Form::close() !!}
 
 
 

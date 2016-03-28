@@ -89,6 +89,26 @@ class PagesController extends Controller
       return view('pages/QRCode')->with(PagesController::$data);
     }
 
+    public function devQRCode(){
+      Tracker::hit("QRCode");
+      PagesController::fillData(array('id'));
+      $data = PagesController::getData();
+
+      $data['events'] = Event::all();
+      return view('pages/DevQRCode')->with($data);
+    }
+
+    public function developQRCode($id){
+      Tracker::hit("QRCode");
+      PagesController::fillData(array('id'));
+      $data = PagesController::getData();
+
+      $data['event'] = Event::find($id);
+      $time = microtime();
+      $data['time'] = base_convert($time, 10, 7);
+      return view('pages/DevelopQRCode')->with($data);
+    }
+
 
 
 
@@ -230,6 +250,7 @@ class PagesController extends Controller
           PagesController::$data['user'] = $response['name'];
           PagesController::$data['image'] = $response['picture']['url'];
           PagesController::$data['loggedin'] = true;
+          PagesController::$data['is_dev'] = PagesController::isDeveloper($response['id']);
           if (isset($extras)){
             foreach($extras as $extra){
               PagesController::$data[$extra] = $response[$extra];
@@ -240,7 +261,8 @@ class PagesController extends Controller
           PagesController::$data['user'] = '';
           PagesController::$data['image'] = '';
           PagesController::$data['loggedin'] = false;
-          
+          PagesController::$data['is_dev'] = false;
+
           unset($_SESSION['fb_access_token']);
 
           if (isset($extras)){

@@ -70,10 +70,17 @@ class EventsController extends Controller
     $data = PagesController::getData();
 
     $data['uri'] = 'events/'.$hash.'/'.$time;
+    $data['succes'] = false;
+    $data['in_time'] = false;
+    $data['already_attended'] = false;
+
+
+    $converted_time = base_convert($time, 7, 10);
 
     if($data['loggedin']) {
         $currentTime = time();
         if ($currentTime - $time > 0){
+          $data['in_time'] = true;
           $event = DB::table('events')
             ->select('id')
             ->where('hash', '=', $hash)
@@ -91,20 +98,20 @@ class EventsController extends Controller
             if ($searchMatch == null){
               DB::table('event_attendences')
                 ->insert(['user_id' => $fbId, 'event_id' => $eventId, 'created_at' => date('Y-m-d   H:i:s')]);
+              $data['succes'] = true;
+            } else {
+              // User already attended this event.
+              $data['already_attended'] = true;
             }
+          } else {
+            // Event does not exist.
+
           }
-
-
         } else {
           // Time difference is too big
         }
-
-
-        $data['succes'] = true;
-
-
     } else {
-
+      // User is not logged in.
     }
 
     return view('pages/events/event_attend')->with($data);

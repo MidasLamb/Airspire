@@ -136,7 +136,12 @@
         FB.login(function(response) {
             if (response.authResponse) {
                 //alert('You are logged in & cookie set!');
-                window.location.replace("/login/".concat(uri));
+                if (navigator.cookieEnabled){
+                  window.location.replace("/login/home");
+                } else {
+                  document.getElementById("token").setAttribute("value", FB.getAuthResponse()['accessToken']);
+                  document.getElementById("loginForm").submit();
+                }
             } else {
                 alert('User cancelled login or did not fully authorize.');
             }
@@ -169,7 +174,7 @@
                 var element = document.getElementById('fbt');
                 element.innerHTML =  '<li class="dropdown" id="fbd">';
                 element = document.getElementById('fbd');
-                element.innerHTML = '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img id="profilepic" src={{ $image }}> {{ $user }} <span class="caret"></span></a> <ul class="dropdown-menu"><li><a href="/QRCode">QR Code</a></li> <li><a href="" onclick="logout()">Logout</a></li></ul> </li>';
+                element.innerHTML = '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img id="profilepic" src={{ $image }}> {{ $user }} <span class="caret"></span></a> <ul class="dropdown-menu"><li><a href="/QRCode">QR Code</a></li><li> <a href="/QRCode/dev">Dev QR</a></li> <li><a href="" onclick="logout()">Logout</a></li></ul> </li>';
             } else {
                 // the user isn't logged in to Facebook or hasn't authenticated the app.
                 //alert("Not Logged in");
@@ -229,7 +234,9 @@
     @yield('js_script')
 </script>
 
-
+{!! Form::open(array('url' => 'login/home', 'id' => 'loginForm')) !!}
+    {{ Form::hidden('token', '', array('id' => 'token'))}}
+{!! Form::close() !!}
 
 
 <nav class="navbar navbar-default">

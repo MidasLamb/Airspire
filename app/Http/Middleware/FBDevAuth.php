@@ -18,12 +18,10 @@ class FBDevAuth
      */
     public function handle($request, Closure $next)
     {
-      //return $next($request);
-      if (!session_id()) {
-          session_start();
-      }
 
-      if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()){
+      //return $next($request);
+
+      if(PagesController::isValidAccessToken()){
           $response = PagesController::getFBUser();
           $fbid = $response['id'];
 
@@ -50,6 +48,6 @@ class FBDevAuth
         }
       }
 
-      //return redirect('construction');
+      return redirect('construction');
     }
 }

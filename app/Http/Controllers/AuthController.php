@@ -14,6 +14,81 @@ use App\Exceptions\Handler;
 class AuthController extends Controller
 {
 
+  public function loginPost($page){
+
+      if(!session_id()) {
+          session_start();
+      }
+
+      $fb = new Facebook([
+          'app_id' => env('FACEBOOK_APP_ID'),
+          'app_secret' => env('FACEBOOK_APP_SECRET'),
+          'default_graph_version' => 'v2.2',
+      ]);
+
+      try {
+          $helper = $fb->getJavaScriptHelper();
+      }catch(Exception $e){
+          Log::error('Javascripthelper threw an error');
+          header("Refresh:0");
+          exit;
+      }catch(Exceptions\FacebookSDKException $e){
+          Log::error('Javascripthelper threw an error');
+          header("Refresh:0");
+
+          exit;
+      }
+
+
+
+      try {
+          $accessToken = $_POST['token'];
+      } catch(Exceptions\FacebookResponseException $e) {
+          // When Graph returns an error
+          Log::error('Graph returned an error: ' . $e->getMessage());
+          exit;
+      } catch(Exceptions\FacebookSDKException $e) {
+          // When validation fails or other local issues
+          Log::error('Facebook SDK returned an error: ' . $e->getMessage());
+
+          exit;
+      }
+
+      if (! isset($accessToken)) {
+          Log::error('No cookie set or no OAuth data could be obtained from cookie.');
+
+      }
+
+//
+//        // Logged in
+//
+      $_SESSION['fb_access_token'] = (string) $accessToken;
+
+      // User is logged in!
+
+
+      $fb_user = PagesController::getFBUser();
+      $data = [
+            'fb_id' => $fb_user['id'],
+            'name' => $fb_user['name'],
+            'access_token' => (string) $accessToken
+      ];
+
+      if (isset($fb_user['email']))
+        $data['email'] = $fb_user['email'];
+
+      $user = User::find($fb_user['id']);
+      if (is_null($user)){
+          $user = User::create($data);
+      } else {
+          $user->access_token = (string) $accessToken;
+          $user->save();
+      }
+
+
+      return Redirect::to('/'.$page);
+  }
+
     public function login($page){
         if(!session_id()) {
             session_start();
@@ -177,6 +252,8 @@ class AuthController extends Controller
 
         return Redirect::to('/home');
     }
+
+
 
 
     public function logout($page){
