@@ -78,6 +78,7 @@ class PagesController extends Controller
         }
         $data['nb_passed_events'] = count($data['passed_events']);
 
+        $data['nb_active_events'] = count($data['active_events']);
 
         return view('pages/home')->with($data);
     }
@@ -86,7 +87,7 @@ class PagesController extends Controller
       Tracker::hit("QRCode");
       PagesController::fillData(array('id'));
 
-      return view('pages/QRCode')->with(PagesController::$data);
+      return view('pages/QRCode/QRCode')->with(PagesController::$data);
     }
 
     public function devQRCode(){
@@ -95,7 +96,7 @@ class PagesController extends Controller
       $data = PagesController::getData();
 
       $data['events'] = Event::all();
-      return view('pages/DevQRCode')->with($data);
+      return view('pages/QRCode/DevQRCode')->with($data);
     }
 
     public function developQRCode($id){
@@ -106,7 +107,7 @@ class PagesController extends Controller
       $data['event'] = Event::find($id);
       $time = microtime();
       $data['time'] = base_convert($time, 10, 7);
-      return view('pages/DevelopQRCode')->with($data);
+      return view('pages/QRCode/DevelopQRCode')->with($data);
     }
 
 

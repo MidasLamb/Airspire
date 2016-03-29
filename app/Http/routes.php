@@ -25,7 +25,7 @@ Route::get('construction', function(){
 
 
 
-  if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()) {
+  if(PagesController::isValidAccessToken()) {
       $response = PagesController::getFBUser();
       $data['loggedin'] = true;
   } else {
@@ -36,8 +36,14 @@ Route::get('construction', function(){
 });
 
 
+//Info pages -------------------------------------------------------
 
 Route::get('/','PagesController@welcome')->middleware(['auth.dev']);
+
+Route::get('home', 'PagesController@home')->middleware(['auth.dev']);
+
+Route::get('aboutus', 'PagesController@aboutus')->middleware(['auth.dev']);
+
 
 //Events --------------------------------------------------------------
 
@@ -50,18 +56,13 @@ Route::get('pasport', 'EventsController@pasport')->middleware(['auth.dev']);
 
 //Login ------------------------------------------------------------
 
-Route::get('login/{page}', 'AuthController@login');
-Route::post('login/{page}', 'AuthController@loginPost');
+Route::get('login/{page}', 'AuthController@login')->where('page', '(.*)');
+Route::post('login/{page}', 'AuthController@loginPost')->where('page', '(.*)');
 //
 //Route::get('loginFallback', 'AuthController@loginFallback');
 
-Route::get('logout/{page}', 'AuthController@logout')->middleware(['auth.dev']);
+Route::get('logout/{page}', 'AuthController@logout')->where('page', '(.*)');
 
-//Info pages -------------------------------------------------------
-
-Route::get('home', 'PagesController@home')->middleware(['auth.dev']);
-
-Route::get('aboutus', 'PagesController@aboutus')->middleware(['auth.dev']);
 
 
 //QR Code --------------------------------------------------------------

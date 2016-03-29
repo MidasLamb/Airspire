@@ -28,7 +28,6 @@
     </div>
   </div>
 
-    @if($loggedin)
     <div class="thumbnail">
       <div class="row">
         <h3 style="margin-left: 20px; margin-top: 10px;">Aankomende evenementen:</h3>
@@ -46,10 +45,10 @@
       </div>
     </div>
 
-
+  @if($loggedin)
     <div class="thumbnail">
       <div class="row">
-        <h3 style="margin-left: 20px; margin-top: 10px;">Bijgewoonde evenementen: {{ $nb_attended_events }}/{{ $nb_passed_events }}</h3>
+        <h3 style="margin-left: 20px; margin-top: 10px;">Bijgewoonde evenementen: {{ $nb_attended_events }}/{{ $nb_passed_events + $nb_active_events}}</h3>
       </div>
       <div class="row">
         @foreach($upcoming_events as $event)

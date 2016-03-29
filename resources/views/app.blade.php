@@ -123,7 +123,7 @@
     var loggedInFB = {{ json_encode($loggedin) }};
 
     var stringref = String(window.location.href);
-    var lastIndex = stringref.lastIndexOf('/');
+    var lastIndex = stringref.indexOf('/', 10);
     var uri = stringref.substring(lastIndex+1, stringref.length);
 
 </script>
@@ -137,7 +137,7 @@
             if (response.authResponse) {
                 //alert('You are logged in & cookie set!');
                 if (navigator.cookieEnabled){
-                  window.location.replace("/login/home");
+                  window.location.replace("/login/".concat(uri));
                 } else {
                   document.getElementById("token").setAttribute("value", FB.getAuthResponse()['accessToken']);
                   document.getElementById("loginForm").submit();
@@ -198,8 +198,6 @@
         }
 
     }
-
-
 
     // Load the SDK asynchronously
     (function(d, s, id) {

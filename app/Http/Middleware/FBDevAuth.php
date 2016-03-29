@@ -19,7 +19,7 @@ class FBDevAuth
     public function handle($request, Closure $next)
     {
 
-      //return $next($request);
+      return $next($request);
 
       if(PagesController::isValidAccessToken()){
           $response = PagesController::getFBUser();
@@ -34,17 +34,17 @@ class FBDevAuth
               //Allow acces:
               return $next($request);
             } else {
-              echo "You are not allowed";
+              //echo "You are not allowed";
             }
           } else{
-            echo "User does not exist in database";
+            //echo "User does not exist in database";
           }
 
       } else {
         if (!isset($_SESSION['fb_access_token'])){
-          echo "Token not set";
+          //echo "Token not set";
         } else {
-          echo "Not a valid token";
+          //echo "Not a valid token";
         }
       }
 
