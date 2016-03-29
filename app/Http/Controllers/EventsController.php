@@ -60,8 +60,8 @@ class EventsController extends Controller
   }
 
   /**
-  * First check if user is logged in
-  *  $time should be in seconds, because time() returns seconds.
+  *
+  *
   */
   public function eventAttendence($hash, $time){
 
@@ -75,11 +75,12 @@ class EventsController extends Controller
     $data['already_attended'] = false;
 
 
-    $converted_time = base_convert($time, 7, 10);
+    $converted_time = base_convert($time, 16, 10);
 
     if($data['loggedin']) {
         $currentTime = time();
-        if ($currentTime - $time > 0){
+        //If the time difference is more than 5 minutes, it took too long.
+        if (abs($currentTime - $time) < 1000*60*5){
           $data['in_time'] = true;
           $event = DB::table('events')
             ->select('id')

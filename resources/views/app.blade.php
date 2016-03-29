@@ -254,12 +254,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class=@yield('active-home')><a href="/home"> Home <span class="sr-only">(current)</span></a></li>
-                <li class=@yield('active-event')><a href="/events">Events</a></li>
+                <li class=@yield('active-event')><a href="/events">Evenementen</a></li>
                 @if($loggedin)
-                <li class=@yield('active-pasport')><a href="/pasport">Pasport</a></li>
+                <li class=@yield('active-pasport')><a href="/pasport">Paspoort</a></li>
                 @endif
                 <li class=@yield('active-media')><a href="/media">Media</a></li>
                 <li class=@yield('active-aboutus')><a href="/aboutus">About us</a></li>
+                <li class=@yield('active-booth')><a href="/booth">Standje</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">

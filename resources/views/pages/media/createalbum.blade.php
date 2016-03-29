@@ -1,5 +1,9 @@
 @extends('app')
 
+@section('active-media')
+  "active"
+@stop
+
 
 {{--*/ $title = 'Media' /*--}}
 

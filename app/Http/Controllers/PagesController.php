@@ -83,6 +83,14 @@ class PagesController extends Controller
         return view('pages/home')->with($data);
     }
 
+    public function booth(){
+      Tracker::hit("home");
+      PagesController::fillData();
+      $data = PagesController::getData();
+
+      return view('pages/booth')->with($data);
+    }
+
     public function QRCode(){
       Tracker::hit("QRCode");
       PagesController::fillData(array('id'));
@@ -106,7 +114,7 @@ class PagesController extends Controller
 
       $data['event'] = Event::find($id);
       $time = microtime();
-      $data['time'] = base_convert($time, 10, 7);
+      $data['time'] = base_convert($time, 10, 16);
       return view('pages/QRCode/DevelopQRCode')->with($data);
     }
 

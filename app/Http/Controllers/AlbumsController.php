@@ -18,8 +18,9 @@ class AlbumsController extends Controller
   public function getList()
   {
     Tracker::hit("media/index");
-    PagesController::fillData();
+    PagesController::fillData(array('id'));
     $data = PagesController::getData();
+    $data['is_dev'] = PagesController::isDeveloper($data['id']);
 
     $data['albums'] = Album::with('Photos')->get();
     return view('pages/media/index')
