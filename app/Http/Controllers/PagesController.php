@@ -63,6 +63,8 @@ class PagesController extends Controller
 
         $data['active_events'] = Event::where('started_at', '<', date('Y-m-d   H:i:s'))->where('ended_at', '>', date('Y-m-d   H:i:s'))->get();
 
+        $data['passed_events'] = Event::where('ended_at', '<', date('Y-m-d   H:i:s'))->get();
+
 
         if ($data['loggedin']){
           $data['attended_events'] = DB::table('events')
@@ -84,11 +86,19 @@ class PagesController extends Controller
     }
 
     public function booth(){
-      Tracker::hit("home");
+      Tracker::hit("booth");
       PagesController::fillData();
       $data = PagesController::getData();
 
       return view('pages/booth')->with($data);
+    }
+
+    public function playThatCard(){
+      Tracker::hit("playThatCard");
+      PagesController::fillData();
+      $data = PagesController::getData();
+
+      return view('pages/playThatCard')->with($data);
     }
 
     public function QRCode(){

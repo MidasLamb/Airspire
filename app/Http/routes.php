@@ -46,6 +46,7 @@ Route::get('aboutus', 'PagesController@aboutus')->middleware(['auth.dev']);
 
 Route::get('booth', 'PagesController@booth')->middleware(['auth.dev']);
 
+Route::get('playthatcard', 'PagesController@playThatCard')->middleware(['auth.dev']);
 
 //Events --------------------------------------------------------------
 

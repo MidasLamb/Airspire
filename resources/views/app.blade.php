@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,10 @@
 
 
     <style>
+
+        .flag {
+           box-shadow: 0px 0px 2px 2px #ece6e6;
+        }
         #profilepic {
             max-height: 35px;
             max-width: 35px;
@@ -254,14 +258,15 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class=@yield('active-home')><a href="/home"> Home <span class="sr-only">(current)</span></a></li>
+                <li class=@yield('active-playthatcard')><a href="/playthatcard">Play That Card</a></li>
                 <li class=@yield('active-event')><a href="/events">Evenementen</a></li>
                 @if($loggedin)
                 <li class=@yield('active-pasport')><a href="/pasport">Paspoort</a></li>
                 @endif
                 <li class=@yield('active-media')><a href="/media">Media</a></li>
-                <li class=@yield('active-aboutus')><a href="/aboutus">About us</a></li>
                 <li class=@yield('active-booth')><a href="/booth">Standje</a></li>
-                <li class="dropdown">
+                <li class=@yield('active-aboutus')><a href="/aboutus">About us</a></li>
+                <!-- <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
@@ -272,7 +277,7 @@
                         <li role="separator" class="divider"></li>
                         <li><a href="#">One more separated link</a></li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right" id="fbt">
                 <li><fb:login-button data-size="xlarge" scope="public_profile,email,user_friends" onlogin="logInWithFacebook();">
@@ -294,7 +299,7 @@
                 <div class="well">
                     <ul class="nav ">
                         <li class="nav-header"><h4><b>Social media</b></h4></li>
-                        <li><div><a class="twitter-timeline" href="https://twitter.com/hashtag/Airspire" data-widget-id="672763817529622528">Tweets over #Airspire</a></div>
+                        <li><div style="width:100%;"><a class="twitter-timeline" href="https://twitter.com/hashtag/Airspire" data-widget-id="672763817529622528">Tweets over #Airspire</a></div>
                         </li>
 
                     </ul>
