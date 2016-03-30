@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Tracker;
+use App\ptcTracker;
 use Illuminate\Http\Request;
 
 use DB;
@@ -94,7 +95,7 @@ class PagesController extends Controller
     }
 
     public function playThatCard(){
-      Tracker::hit("playThatCard");
+      ptcTracker::hit();
       PagesController::fillData();
       $data = PagesController::getData();
 

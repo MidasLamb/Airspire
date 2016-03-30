@@ -89,7 +89,8 @@
           @endif
           " id= "{{ $key }}" style="width: 100%; height: 100%;">
           <a href="{{ URL::route('show_image',array('id'=>$photo['id']))}}">
-            <img alt="{{$name}}" src="/albums/{{$photo['image']}}" style= "max-width: 100%; max-height: 100%; margin: auto;">
+            <img alt="{{$name}}" src="/albums/{{$photo['image']}}" style= "max-width: 100%; max-height: 100%; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); position: absolute;">
           </a>
         </div>
         @endforeach

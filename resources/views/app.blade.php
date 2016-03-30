@@ -294,7 +294,8 @@
         <div class="col-md-8 col-md-offset-1 col-xs-12">
             @yield('content')
         </div>
-        <div class="col-md-3 col-xs-6 social-media" >
+        <div class="visible-xs">&nbsp;</div>
+        <div class="col-md-3 col-xs-12 social-media" >
             <div class="sidebar-nav-fixed">
                 <div class="well">
                     <ul class="nav ">
