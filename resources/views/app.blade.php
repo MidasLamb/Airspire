@@ -178,7 +178,7 @@
                 var element = document.getElementById('fbt');
                 element.innerHTML =  '<li class="dropdown" id="fbd">';
                 element = document.getElementById('fbd');
-                element.innerHTML = '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img id="profilepic" src={{ $image }}> {{ $user }} <span class="caret"></span></a> <ul class="dropdown-menu"><li><a href="/QRCode">QR Code</a></li><li> <a href="/QRCode/dev">Dev QR</a></li> <li><a href="" onclick="logout()">Logout</a></li></ul> </li>';
+                element.innerHTML = '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img id="profilepic" src={{ $image }}> {{ $user }} <span class="caret"></span></a> <ul class="dropdown-menu"><li><a href="/QRCode">QR Code</a></li><li> <a href="/QRCode/dev">Dev QR</a></li> <li><a href="javaScript:void(0);" onclick="logout()">Logout</a></li></ul> </li>';
             } else {
                 // the user isn't logged in to Facebook or hasn't authenticated the app.
                 //alert("Not Logged in");

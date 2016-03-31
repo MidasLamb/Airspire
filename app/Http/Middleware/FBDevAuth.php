@@ -19,7 +19,7 @@ class FBDevAuth
     public function handle($request, Closure $next)
     {
 
-      //return $next($request);
+      return $next($request);
 
       if(PagesController::isValidAccessToken()){
           $response = PagesController::getFBUser();
