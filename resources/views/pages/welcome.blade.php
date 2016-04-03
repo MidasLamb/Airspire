@@ -3,7 +3,7 @@
     <head>
         <title>Airspire</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
         <style>
             html, body {
@@ -16,8 +16,9 @@
                 width: 100%;
                 display: table;
                 font-weight: 100;
-                font-family: 'Lato';
+                font-family: 'Montserrat';
                 cursor: pointer; cursor: hand;
+
             }
 
             .container {
@@ -33,8 +34,9 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 80px;
                 opacity: 0;
+                color: #1351b7;
             }
 
             .subtitle {
@@ -89,7 +91,7 @@
 
         <div class="container">
             <div class="content">
-                <div class="title" id="title" ><img src='/images/Airspire_wit.png' style="max-width: 50%;"></div>
+                <div class="title" id="title" ><img src='/images/Airspire_wit.png' style="max-width: 50%;"> </br> <div style= "position: relative; top:-100px;">Verwelkomt u!</div></div>
                 <div class="subtitle" id="subtitle">Click anywhere to continue</div>
             </div>
         </div>

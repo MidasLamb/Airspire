@@ -8,12 +8,26 @@
 @stop
 
 @section('content')
+  <h1>Media</h1>
+
+
+
+  <h2> Ons promo-filmpje! </h2>
+  <div class="thumbnail">
+    <video width="100%" controls autoplay>
+      <source src="/video/Braumix.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <h2> Foto's </h2>
 
   @if ($is_dev)
 
     <a href="{{URL::route('create_album_form')}}" class="btn btn-big btn-default">Create New Album</a>
 
   @endif
+
   <div class="row">
     @foreach($albums as $album)
     <a href="{{URL::route('show_album',array('id'=>$album->id))}}">

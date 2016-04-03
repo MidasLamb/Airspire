@@ -16,8 +16,8 @@
             <h2 class="media-heading" style="font-size: 26px;">Album Name:</h2>
             <p>{{$name}}</p>
           <div class="media">
-            <h2 class="media-heading" style="font-size: 26px;">AlbumDescription :</h2>
-            <p>{{$description}}<p>
+            <!-- <h2 class="media-heading" style="font-size: 26px;">AlbumDescription :</h2>
+            <p>{{$description}}<p> -->
             @if($isDev)
               <a href="{{URL::route('add_image',array('id'=>$id))}}"><button type="button"class="btn btn-primary btn-large">Add New Image to Album</button></a>
               <a href="{{URL::route('delete_album',array('id'=>$id))}}" onclick="return confirm('Are you sure?')"><button type="button"class="btn btn-danger btn-large">Delete Album</button></a>
@@ -34,8 +34,8 @@
           <div class="thumbnail" onclick="openNav( {{ $key }})" style="max-height: 350px;">
             <img class = "image" alt="{{$name}}" src="/albums/{{$photo['image']}}" style="max-height: 150px;">
             <div class="caption">
-              <p>{{$photo['description']}}</p>
-              <p>Created date:  {{ date("d F Y",strtotime($photo['created_at'])) }} at {{ date("g:ha",strtotime($photo['created_at'])) }}</p>
+              <!-- <p>{{$photo['description']}}</p> -->
+              <!-- <p>Created date:  {{ date("d F Y",strtotime($photo['created_at'])) }} at {{ date("g:ha",strtotime($photo['created_at'])) }}</p> -->
               @if($isDev)
                 <a href="{{URL::route('delete_image',array('id'=>$photo['id']))}}" onclick="return confirm('Are you sure?')"><button type="button"class="btn btn-danger btn-small">Delete Image</button></a>
                 <p>Move image to another Album :</p>
