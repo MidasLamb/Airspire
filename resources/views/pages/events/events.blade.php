@@ -26,7 +26,7 @@
                     <blockquote>
                       <h4>Wanneer?</h4>
                       <p>
-                        {{ $event->excerpt }}
+                        {!! $event->excerpt !!}
                       </p>
                     </blockquote>
                   </div>
