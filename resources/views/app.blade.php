@@ -11,9 +11,8 @@
     <meta property="og:image"              content="http://www.ploegairspire.be/images/Airspire_wit.png" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/scripts/bootstrap/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 
     <style>
@@ -43,7 +42,7 @@
 
         body {
           /* Margin bottom by footer height */
-          margin-bottom: 200px;
+          margin-bottom: 300px;
         }
 
         .footer {
@@ -339,17 +338,18 @@
         <div class="visible-xs">&nbsp;</div>
         <div class="col-md-3 col-xs-12 social-media" >
             <div class="sidebar-nav-fixed">
-                <div class="well">
+                <div class="well" style="padding-top: 4px;">
                     <ul class="nav ">
                         <li class="nav-header"><h2><b>Social media</b></h2></li>
                         <li> <h3>Like us on Facebook:</h3>
-                          <div
+                          <div ><div
                                 class="fb-like"
                                 data-share="true"
                                 data-href="https://www.facebook.com/Ploeg-Airspire-1578558539141219"
                                 data-colorscheme="dark"
                                 data-show-faces="true"
-                                data-layout="button"></div></li>
+                                data-layout="button"
+                                style="padding: 7px; border-radius: 5px; background-color:white;"></div></div></li>
                                 <li><div style="height: 5px;"></div></li>
                         <li><h3>Tweets:</h3><div style="width:100%;"><a class="twitter-timeline" href="https://twitter.com/hashtag/PloegAirspire" data-widget-id="672763817529622528">Tweets over #PloegAirspire</a></div>
                         </li>
@@ -523,7 +523,7 @@
           <div class="row" style="margin-left: 15px; margin-right: 15px; margin-top: 15px;">
               <b><p class="text-right">
                 Created by Midas Lambrichts</br>
-                Contact: midas_lambrichts@hotmail.com</br>
+                midas_lambrichts@hotmail.com</br>
                 Github: <a href="https://github.com/MidasLamb" target="_blank">Github</a></br>
                 LinkedIn: <a href="https://be.linkedin.com/in/midas-lambrichts-507a4b94" target="_blank">LinkedIn</a></br>
               </p></b>
@@ -541,7 +541,7 @@
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="/scripts/jquery-1.12.3.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 <script>

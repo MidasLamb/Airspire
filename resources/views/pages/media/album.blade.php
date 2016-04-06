@@ -114,20 +114,7 @@
 
 @stop
 
-@section('js_script')
-
-$(function(){
-    $(document).keydown(function(e){
-        if(e.keyCode == 37){
-          $('#myCarousel').carousel('prev');
-        } else if (e.keyCode == 39){
-          $('#myCarousel').carousel('next');
-        }
-
-    });
-});
-
-
+@section('end_js')
 
 $(document).ready(function(){
   $("#myCarousel").on('slid.bs.carousel', function () {
@@ -146,6 +133,15 @@ $(document).ready(function(){
 
   $('.carousel-control').click(function(event){
     event.preventDefault();
+
+  $(document).keydown(function(e){
+            if(e.keyCode == 37){
+              $('#myCarousel').carousel('prev');
+            } else if (e.keyCode == 39){
+              $('#myCarousel').carousel('next');
+            }
+
+        });
 });
 
 });
@@ -183,24 +179,6 @@ function decrementHash(){
   }
 }
 
-document.onkeydown = checkKey;
-
-function checkKey(e) {
-
-    e = e || window.event;
-    if (e.keyCode == '37') {
-       // left arrow
-    }
-    else if (e.keyCode == '39') {
-       // right arrow
-    }
-
-}
-
-
-@stop
-
-@section('end_js')
 if(window.location.hash) {
   var hash = window.location.hash.substring(1);
   openNav(hash);
@@ -209,7 +187,6 @@ if(window.location.hash) {
 
 
 @section('css')
-html, body { height: 100%; }
 
 .image:hover {
   cursor: pointer;
