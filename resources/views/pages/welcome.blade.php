@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Airspire</title>
+        <title>Ploeg Airspire</title>
+
+        <meta property="og:url"                content="http://www.ploegairspire.be" />
+        <meta property="og:type"               content="website" />
+        <meta property="og:title"              content="Ploeg Airspire" />
+        <meta property="og:description"        content="De website van Ploeg Airspire!" />
+        <meta property="og:image"              content="http://www.ploegairspire.be/images/Airspire_wit.png" />
 
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 

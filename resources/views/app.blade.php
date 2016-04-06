@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>Airspire|{{ $title }}</title>
 
+    <meta property="og:url"                content="http://www.ploegairspire.be" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="Ploeg Airspire" />
+    <meta property="og:description"        content="De website van Ploeg Airspire!" />
+    <meta property="og:image"              content="http://www.ploegairspire.be/images/Airspire_wit.png" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -12,9 +18,45 @@
 
     <style>
 
+        .partner-col{
+          height: 80px;
+          position: relative;
+        }
+
+        .partner {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          max-width: 85%;
+          max-height: 90%;
+        }
+
         .flag {
            box-shadow: 0px 0px 2px 2px #ece6e6;
         }
+
+        html {
+          position: relative;
+          min-height: 100%;
+        }
+
+        body {
+          /* Margin bottom by footer height */
+          margin-bottom: 200px;
+        }
+
+        .footer {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          background-color: #ece6e6;
+          box-shadow: 0px 0px 6px 6px #ece6e6;
+          /* Set the fixed height of the footer here */
+          height: 200px;
+
+        }
+
         #profilepic {
             max-height: 35px;
             max-width: 35px;
@@ -299,8 +341,17 @@
             <div class="sidebar-nav-fixed">
                 <div class="well">
                     <ul class="nav ">
-                        <li class="nav-header"><h4><b>Social media</b></h4></li>
-                        <li><div style="width:100%;"><a class="twitter-timeline" href="https://twitter.com/hashtag/Airspire" data-widget-id="672763817529622528">Tweets over #Airspire</a></div>
+                        <li class="nav-header"><h2><b>Social media</b></h2></li>
+                        <li> <h3>Like us on Facebook:</h3>
+                          <div
+                                class="fb-like"
+                                data-share="true"
+                                data-href="https://www.facebook.com/Ploeg-Airspire-1578558539141219"
+                                data-colorscheme="dark"
+                                data-show-faces="true"
+                                data-layout="button"></div></li>
+                                <li><div style="height: 5px;"></div></li>
+                        <li><h3>Tweets:</h3><div style="width:100%;"><a class="twitter-timeline" href="https://twitter.com/hashtag/PloegAirspire" data-widget-id="672763817529622528">Tweets over #PloegAirspire</a></div>
                         </li>
 
                     </ul>
@@ -311,7 +362,178 @@
         </div>
         <!--/span-->
     </div>
+
+
 </div>
+
+<!-- footer -->
+<footer class="footer">
+
+    <!-- computer -->
+    <div class="hidden-xs">
+      <div class="col-xs-12">
+        <div class="row"  style="margin-left: 15px;">
+          <h3 style="margin-top: 5px;">Onze partners:</h3>
+
+        </div>
+        <div class="row" style="margin-top: -15px;" >
+          <div class="col-xs-9">
+            <div class="row" style="max-height: 80px;">
+              <div class="col-xs-1"></div>
+              <div class="col-xs-2 partner-col">
+                <a href="http://www.cartamundi.com/?lang=nl" target="_blank">
+                  <img class="partner" alt="Cartamundi" src="/partners/cartamundi.svg">
+                </a>
+              </div>
+              <div class="col-xs-2 partner-col">
+                <a href="http://www.cartamundi-digital.com/" target="_blank">
+                  <img class="partner" alt="Cartamundi digital" src="/partners/cartamundidigital.png">
+                </a>
+              </div>
+              <div class="col-xs-2 partner-col">
+                <a href="http://www.basic-italian.be/" target="_blank">
+                  <img class="partner" alt="Basic Italian" src="/partners/basicitalian.jpg">
+
+                </a>
+              </div>
+              <div class="col-xs-2 partner-col">
+                <a href="http://www.honger.be/"target="_blank">
+                  <img class="partner" alt="Honger" src="/partners/honger.png">
+                </a>
+              </div>
+              <div class="col-xs-2 partner-col">
+                <a href="http://www.koveco.be/" target="_blank">
+                  <img class="partner" alt="Koveco" src="/partners/koveco.png">
+                </a>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-xs-1"></div>
+              <div class="col-xs-2 partner-col">
+                <a href="https://www.skydivecerfontaine.be/nl/" target="_blank">
+                  <img class="partner" alt="Skydive cerfontaine" src="/partners/skydivecerfontaine.png">
+                </a>
+              </div>
+              <div class="col-xs-2 partner-col">
+                <a href="https://www.facebook.com/Galetje-Leuven-729257537124812/?rf=159007177486472" target="_blank">
+                  <img class="partner" alt="Galetje" src="/partners/galetje.png">
+                </a>
+              </div>
+              <div class="col-xs-2 partner-col">
+                <a href="http://www.spice.marketing" target="_blank">
+                  <img class="partner" alt="Spice" src="/partners/spice.png">
+                </a>
+              </div>
+              <div class="col-xs-2 partner-col">
+                <a href="http://www.ebul.be/" target="_blank">
+                  <img class="partner" alt="Vliegclub Ursel" src="/partners/vliegclubursel.png">
+                </a>
+              </div>
+              <div class="col-xs-2 partner-col">
+                <a href="http://www.antwerp-airport.be/contentpage_nl.php" target="_blank">
+                  <img class="partner" alt="Antwerp Airport" src="/partners/antwerpairport.png">
+                </a>
+              </div>
+            </div>
+
+          </div>
+          <div class= "col-xs-3">
+            <div style="top: 80px; position: relative;">
+              <b><p class="text-right">
+                Created by Midas Lambrichts</br>
+                Contact: midas_lambrichts@hotmail.com</br>
+                Github: <a href="https://github.com/MidasLamb" target="_blank">Github</a></br>
+                LinkedIn: <a href="https://be.linkedin.com/in/midas-lambrichts-507a4b94" target="_blank">LinkedIn</a></br>
+              </p></b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /computer -->
+
+
+    <!-- mobile -->
+    <div class="visible-xs" >
+      <div class="col-xs-12" style="background-color: #ece6e6; padding-left: 0px; padding-right: 0px;">
+        <div class="col-xs-12">
+          <div class="row" style="margin-left: 10px;">
+            <h3 style="margin-top: 5px;">Onze partners:</h3>
+          </div>
+
+          <div class="row" style="max-height: 80px;">
+            <div class="col-xs-6 partner-col">
+              <a href="http://www.cartamundi.com/?lang=nl" target="_blank">
+                <img class="partner" alt="Cartamundi" src="/partners/cartamundi.svg" style="max-width: 80%;">
+              </a>
+            </div>
+            <div class="col-xs-6 partner-col">
+              <a href="http://www.cartamundi-digital.com/" target="_blank">
+                <img class="partner" alt="Cartamundi digital" src="/partners/cartamundidigital.png" style="max-width: 80%;">
+              </a>
+            </div>
+            <div class="col-xs-6 partner-col">
+              <a href="http://www.basic-italian.be/" target="_blank">
+                <img class="partner" alt="Basic Italian" src="/partners/basicitalian.jpg">
+
+              </a>
+            </div>
+            <div class="col-xs-6 partner-col">
+              <a href="http://www.honger.be/" target="_blank">
+                <img class="partner" alt="Honger" src="/partners/honger.png">
+              </a>
+            </div>
+            <div class="col-xs-6 partner-col">
+              <a href="http://www.koveco.be/" target="_blank">
+                <img class="partner" alt="Koveco" src="/partners/koveco.png">
+              </a>
+            </div>
+            <div class="col-xs-6 partner-col">
+              <a href="https://www.skydivecerfontaine.be/nl/" target="_blank">
+                <img class="partner" alt="Skydive cerfontaine" src="/partners/skydivecerfontaine.png">
+              </a>
+            </div>
+            <div class="col-xs-6 partner-col">
+              <a href="https://www.facebook.com/Galetje-Leuven-729257537124812/?rf=159007177486472" target="_blank">
+                <img class="partner" alt="Galetje" src="/partners/galetje.png">
+              </a>
+            </div>
+            <div class="col-xs-6 partner-col">
+              <a href="http://www.spice.marketing" target="_blank">
+                <img class="partner" alt="Spice" src="/partners/spice.png">
+              </a>
+            </div>
+            <div class="col-xs-6 partner-col">
+              <a href="http://www.ebul.be/" target="_blank">
+                <img class="partner" alt="Vliegclub Ursel" src="/partners/vliegclubursel.png">
+              </a>
+            </div>
+            <div class="col-xs-6 partner-col">
+              <a href="http://www.antwerp-airport.be/contentpage_nl.php" target="_blank">
+                <img class="partner" alt="Antwerp Airport" src="/partners/antwerpairport.png">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-xs-12" style="height: 20px;">
+          </div>
+
+
+          <div class="row" style="margin-left: 15px; margin-right: 15px; margin-top: 15px;">
+              <b><p class="text-right">
+                Created by Midas Lambrichts</br>
+                Contact: midas_lambrichts@hotmail.com</br>
+                Github: <a href="https://github.com/MidasLamb" target="_blank">Github</a></br>
+                LinkedIn: <a href="https://be.linkedin.com/in/midas-lambrichts-507a4b94" target="_blank">LinkedIn</a></br>
+              </p></b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /footer -->
 
 
 

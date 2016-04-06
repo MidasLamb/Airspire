@@ -29,7 +29,7 @@
       @if(count($active_events) > 0)
         @foreach($active_events as $event)
           <a href="{{URL::route('event',array('id'=>$event->id))}}">
-            <div class="col-lg-3">
+            <div class="col-md-3 col-xs-6">
               <div>
                 <img class="flag" alt="Flag of {{$event->country_name}}" src="/flags/{{$event->country_flag}}" style="max-width: 90%; margin-bottom: 10px; margin-left: 5%; margin-right: 5%;">
               </div>
@@ -52,7 +52,7 @@
         @if(count($upcoming_events) > 0)
           @foreach($upcoming_events as $event)
             <a href="{{URL::route('event',array('id'=>$event->id))}}">
-              <div class="col-md-3">
+              <div class="col-md-3 col-xs-6">
                 <div>
                   <img class="flag" alt="Flag of {{$event->country_name}}" src="/flags/{{$event->country_flag}}" style="max-width: 90%; margin-bottom: 10px; margin-left: 5%; margin-right: 5%;">
                 </div>
@@ -75,7 +75,7 @@
       <div class="row">
         @foreach($upcoming_events as $event)
           <a href="{{URL::route('event',array('id'=>$event->id))}}">
-            <div class="col-lg-3">
+            <div class="col-md-3 col-xs-6">
               <div>
                 <img class="flag" alt="Flag of {{$event->country_name}}" src="/flags/{{$event->country_flag}}" style="max-width: 90%; margin-bottom: 10px; margin-left: 5%; margin-right: 5%;">
               </div>
@@ -96,7 +96,7 @@
         <div class="row">
           @foreach($passed_events as $event)
             <a href="{{URL::route('event',array('id'=>$event->id))}}">
-              <div class="col-lg-3">
+              <div class="col-md-3 col-xs-6">
                 <div>
                   <img class="flag" alt="Flag of {{$event->country_name}}" src="/flags/{{$event->country_flag}}" style="max-width: 90%; margin-bottom: 10px; margin-left: 5%; margin-right: 5%;">
                 </div>

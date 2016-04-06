@@ -10,18 +10,19 @@
 @section('content')
 
       <div class="starter-template">
-        <div class="media">
-          <img class="media-object pull-left"alt="{{$name}}" src="/albums/{{$cover_image}}" style="max-width: 350px; padding-bottom: 10px;">
-          <div class="media-body">
-            <h2 class="media-heading" style="font-size: 26px;">Album Name:</h2>
-            <p>{{$name}}</p>
-          <div class="media">
-            <!-- <h2 class="media-heading" style="font-size: 26px;">AlbumDescription :</h2>
-            <p>{{$description}}<p> -->
-            @if($isDev)
-              <a href="{{URL::route('add_image',array('id'=>$id))}}"><button type="button"class="btn btn-primary btn-large">Add New Image to Album</button></a>
-              <a href="{{URL::route('delete_album',array('id'=>$id))}}" onclick="return confirm('Are you sure?')"><button type="button"class="btn btn-danger btn-large">Delete Album</button></a>
-            @endif
+        <div class="row">
+          <div class="media" style="position: relative">
+            <img class="media-object pull-left flag" alt="{{$name}}" src="/albums/{{$cover_image}}" style="max-width: 350px; max-height: 100px; margin-bottom: 10px; margin-left: 10px; padding-right: 0px; margin-right: 20px; position: relative; left: 10px;">
+            <div class="media-body">
+              <h1 class="media-heading" style="bottom: 0px; position: absolute;">{{$name}}</h1>
+            <div class="media">
+              <!-- <h2 class="media-heading" style="font-size: 26px;">AlbumDescription :</h2>
+              <p>{{$description}}<p> -->
+              @if($isDev)
+                <a href="{{URL::route('add_image',array('id'=>$id))}}"><button type="button"class="btn btn-primary btn-large">Add New Image to Album</button></a>
+                <a href="{{URL::route('delete_album',array('id'=>$id))}}" onclick="return confirm('Are you sure?')"><button type="button"class="btn btn-danger btn-large">Delete Album</button></a>
+              @endif
+            </div>
           </div>
         </div>
       </div>
@@ -115,6 +116,17 @@
 
 @section('js_script')
 
+$(function(){
+    $(document).keydown(function(e){
+        if(e.keyCode == 37){
+          $('#myCarousel').carousel('prev');
+        } else if (e.keyCode == 39){
+          $('#myCarousel').carousel('next');
+        }
+
+    });
+});
+
 
 
 $(document).ready(function(){
@@ -169,6 +181,20 @@ function decrementHash(){
     var hash = window.location.hash.substring(1);
     changeHash( parseInt(changeHash( document.getElementsByClassName("item active")[0].id )) - 1);
   }
+}
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+    if (e.keyCode == '37') {
+       // left arrow
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+    }
+
 }
 
 
