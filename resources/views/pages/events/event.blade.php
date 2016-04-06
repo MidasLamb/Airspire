@@ -16,7 +16,7 @@
         <div class="thumbnail">
           <img class="flag" alt="Flag of {{$event->country_name}}" src="/flags/{{$event->country_flag}}" style="width: 250px; position: relative; margin-top: 10px; margin-bottom: 10px;">
           <h3>Wanneer?</h3>
-          "{{ $event->excerpt }}"
+          {!! $event->excerpt !!}
         </div>
       </div>
     </div>
