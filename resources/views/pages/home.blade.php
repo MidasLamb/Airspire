@@ -12,9 +12,17 @@
     <h1>Welkom op de site van Ploeg Airspire!</h1>
   </div>
 
-  <h2> Ons promo-filmpje! </h2>
+  <h2>Welkom op de lollige webpagina van PLOEG AIRSPIRE! </h2>
   <div class="thumbnail">
-
+    <div style="margin-left: 15px; margin-right: 15px;">
+      <u><h2>Welkom op de lollige webpagina van PLOEG AIRSPIRE!</h2></u>
+      <p class="lead" style="font-size: 18px;">
+        Lolploeg Airspire maakt deel uit van Kiesweek Ekonomika, welke zal doorgaan 18 en 19 april op het Ladeuzeplein te Leuven.
+        Hier kan u alle info vinden over wie we zijn en wat we doen. Zo vindt u alles over onze activiteiten onder <a href="/events">‘events’</a>, over onze lollige stewardessjes en captains onder <a href="/aboutus">‘about us’</a> en nog vele meer!
+      </p>
+      <p class="lead" style="font-size: 18px;">Kom tijdens dit grootse evenement zeker eens een kijkje nemen op onze stand en geniet van allerlei leuke activiteiten en gadgets die we jullie te bieden hebben!
+      </p>
+    </div>
     &nbsp; <br>
     <video width="100%" controls autoplay>
       <source src="/video/Braumix.mp4" type="video/mp4">

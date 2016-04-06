@@ -11,7 +11,7 @@
 {{--*/ $title = 'Events' /*--}}
 
 @section('content')
-    <h1>Events</h1>
+    <h1>Evenementen</h1>
 
     @if (count($events) > 0)
       <!-- <ul> -->
@@ -23,7 +23,12 @@
                   <img class="media-object pull-right flag" alt="Flag of {{$event->country_name}}" src="/flags/{{$event->country_flag}}" style="max-width:30%; padding: 0px; margin-bottom: 5px; margin:2px;">
                   <div class= "media-body">
                     <h3>{{ $event->title }}</h3>
-                    {{ $event->excerpt }}
+                    <blockquote>
+                      <h4>Wanneer?</h4>
+                      <p>
+                        {{ $event->excerpt }}
+                      </p>
+                    </blockquote>
                   </div>
                 </div>
 

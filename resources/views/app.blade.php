@@ -17,6 +17,14 @@
 
     <style>
 
+        .cookie{
+          position:fixed;
+          bottom: 0px;
+          width: 100%;
+          background-color:#ece6e6;
+          box-shadow: 0px 0px 2px 2px #000000;
+        }
+
         .partner-col{
           height: 80px;
           position: relative;
@@ -538,6 +546,58 @@
 
 
 
+  <div class="hidden" id="cookieClass">
+    <div class="cookie">
+      <div class="hidden-xs" style="margin: 10px;">
+        <h4>
+          Deze website maakt gebruik van cookies, door deze website te gebruiken gaat u akkoord met het gebruik van deze cookies. <button type="button"  class="btn btn-success" onclick="acceptCookie()"> Ik snap het! </button>
+        </h4>
+      </div>
+      <div class="visible-xs" style="margin: 10px;">
+        <p class="text-center">
+          Deze website maakt gebruik van cookies, door deze website te gebruiken gaat u akkoord met het gebruik van deze cookies.<br> <button onclick="acceptCookie()" type="button"  class="btn btn-success" > Ik snap het! </button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!--Start Cookie Script-->
+  <script>
+    function acceptCookie(){
+      setCookie("acceptcookie", "true", 30);
+      document.getElementById("cookieClass").className = "hidden";
+    }
+
+    function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      var expires = "expires="+d.toUTCString();
+      document.cookie = cname + "=" + cvalue + "; " + expires;
+  }
+
+    function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0; i<ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1);
+          if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+      }
+      return "";
+  }
+
+    function showCookie(){
+      console.log(getCookie("acceptcookie"));
+      if(getCookie("acceptcookie") == ""){
+        console.log("showing");
+        document.getElementById("cookieClass").className = "visible";
+      }
+    }
+
+    showCookie();
+  </script>
+  <!--End Cookie Script-->
+
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -547,6 +607,8 @@
 <script>
   @yield('end_js')
 </script>
+
+
 </body>
 
 </html>

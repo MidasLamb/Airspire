@@ -151,6 +151,9 @@ class AuthController extends Controller
 //        // Logged in
 //
         $_SESSION['fb_access_token'] = (string) $accessToken;
+        $cookie_name = "fb_access_cookie";
+        $cookie_value = (string) $accessToken;
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 
         // User is logged in!
 

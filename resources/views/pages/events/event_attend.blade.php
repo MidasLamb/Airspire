@@ -25,7 +25,7 @@ function share(){
       <h3>Je aanwezigheid is geregistreerd!</h3>
       Deel het met je vrienden!
       <div class="fb-share-button"
-    		data-href="http://www.ploegairspire.be/event/1"
+    		data-href="http://www.ploegairspire.be/event/{{ $event_id }}"
     		data-layout="button">
   	 </div>
     @else

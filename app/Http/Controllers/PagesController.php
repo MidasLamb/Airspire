@@ -124,7 +124,7 @@ class PagesController extends Controller
       $data = PagesController::getData();
 
       $data['event'] = Event::find($id);
-      $time = microtime();
+      $time = round(microtime(true)*1000);
       $data['time'] = base_convert($time, 10, 16);
       return view('pages/QRCode/DevelopQRCode')->with($data);
     }

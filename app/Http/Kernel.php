@@ -18,6 +18,7 @@ class Kernel extends HttpKernel
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \App\Http\Middleware\VerifyCsrfToken::class,
+        \App\Http\Middleware\CookieSession::class,
     ];
 
     /**
@@ -31,5 +32,6 @@ class Kernel extends HttpKernel
         'auth.quick' => \App\Http\Middleware\QuickMiddleware::class,
         'auth.dev' => \App\Http\Middleware\FBDevAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'cookie' => \App\Http\Middleware\CookieSession::class,
     ];
 }
