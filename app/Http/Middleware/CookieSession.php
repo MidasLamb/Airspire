@@ -23,7 +23,6 @@ class CookieSession
             session_start();
         }
         $_SESSION['fb_access_token'] = $_COOKIE["fb_access_cookie"];
-        echo "Cookievar is set now";
       }
 
       return $next($request);
