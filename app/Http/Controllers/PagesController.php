@@ -58,15 +58,17 @@ class PagesController extends Controller
         $data = PagesController::getData();
 
         //
-        $data['upcoming_events'] = Event::where('started_at', '>', date('Y-m-d   H:i:s'))->get();
+        $data['pos_upcoming_events'] = Event::all();
+
+        $data['upcoming_events'] = $this->parseEvsUpcoming($data['pos_upcoming_events']);
 
         $data['passed_events'] = Event::where('ended_at', '<', date('Y-m-d   H:i:s'))->get();
 
-        $data['active_events'] = Event::where('started_at', '<', date('Y-m-d   H:i:s'))->where('ended_at', '>', date('Y-m-d   H:i:s'))->get();
+        $data['pos_active_events'] = Event::where('started_at', '<', date('Y-m-d   H:i:s'))->where('ended_at', '>', date('Y-m-d   H:i:s'))->get();
+
+        $data['active_events'] = $this->parseEvs($data['pos_active_events']);
 
         $data['passed_events'] = Event::where('ended_at', '<', date('Y-m-d   H:i:s'))->get();
-
-        $data['possible_attended_events'] = Event::where('started_at', '<', date('Y-m-d   H:i:s'))->get();
 
 
         if ($data['loggedin']){
@@ -129,6 +131,73 @@ class PagesController extends Controller
       $time = round(microtime(true)*1000);
       $data['time'] = base_convert($time, 10, 16);
       return view('pages/QRCode/DevelopQRCode')->with($data);
+    }
+
+    private function parseEvs($evs){
+      $res = array();
+
+      foreach($evs as $ev){
+        $pushed =false;
+        $dates = explode("<br>", $ev->excerpt);
+        foreach($dates as $date){
+          $hours = substr($date, 9);
+          $hourArr = explode("-", $hours);
+
+          $startHour = substr($hourArr[0],0,2);
+          $endHour = substr($hourArr[1],0,2);
+
+
+          if (strcmp(substr($date, 0,7), "Maandag") == 0){
+            $day = 18;
+          } elseif (strcmp(substr($date, 0,7), "Dinsdag") == 0){
+            $day = 19;
+          }
+
+          $startDate = date('Y-m-d   H:i:s', mktime($startHour, 0, 0, 4, $day, 2016));
+          $endDate = date('Y-m-d   H:i:s', mktime($endHour, 0, 0, 4, $day, 2016));
+          $now = date('Y-m-d   H:i:s');
+
+          if($startDate < $now && $endDate > $now){
+            if(!$pushed)
+              array_push($res, $ev);
+            $pushed = true;
+        }
+      }
+
+      return $res;
+    }
+
+    private function parseEvsUpcoming($evs){
+      $res = array();
+
+      foreach($evs as $ev){
+        $pushed =false;
+        $dates = explode("<br>", $ev->excerpt);
+        foreach($dates as $date){
+          $hours = substr($date, 9);
+          $hourArr = explode("-", $hours);
+
+          $startHour = substr($hourArr[0],0,2);
+
+
+          if (strcmp(substr($date, 0,7), "Maandag") == 0){
+            $day = 18;
+          } elseif (strcmp(substr($date, 0,7), "Dinsdag") == 0){
+            $day = 19;
+          }
+
+          $startDate = date('Y-m-d   H:i:s', mktime($startHour, 0, 0, 4, $day, 2016));
+          $now = date('Y-m-d   H:i:s');
+
+          if($startDate > $now){
+            if(!$pushed)
+              array_push($res, $ev);
+            $pushed = true;
+          }
+        }
+      }
+
+      return $res;
     }
 
 
