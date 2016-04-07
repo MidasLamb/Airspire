@@ -19,6 +19,9 @@ class CookieSession
     public function handle($request, Closure $next)
     {
       if(isset($_COOKIE["fb_access_cookie"]) && strlen($_COOKIE["fb_access_cookie"]) > 0){
+        if (!session_id()) {
+            session_start();
+        }
         $_SESSION['fb_access_token'] = $_COOKIE["fb_access_cookie"];
         echo "Cookievar is set now";
       }
