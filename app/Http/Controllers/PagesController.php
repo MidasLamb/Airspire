@@ -161,6 +161,7 @@ class PagesController extends Controller
             if(!$pushed)
               array_push($res, $ev);
             $pushed = true;
+          }
         }
       }
 
