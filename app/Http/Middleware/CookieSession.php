@@ -18,7 +18,7 @@ class CookieSession
      */
     public function handle($request, Closure $next)
     {
-      if(isset($_COOKIE["fb_access_cookie"])){
+      if(isset($_COOKIE["fb_access_cookie"]) && strlen($_COOKIE["fb_access_cookie"]) > 0){
         $_SESSION['fb_access_token'] = $_COOKIE["fb_access_cookie"];
       }
 

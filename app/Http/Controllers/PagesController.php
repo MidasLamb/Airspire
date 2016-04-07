@@ -66,6 +66,8 @@ class PagesController extends Controller
 
         $data['passed_events'] = Event::where('ended_at', '<', date('Y-m-d   H:i:s'))->get();
 
+        $data['possible_attended_events'] = array_merge($data['active_events'], $data['passed_events'])
+
 
         if ($data['loggedin']){
           $data['attended_events'] = DB::table('events')

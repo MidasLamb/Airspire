@@ -266,6 +266,11 @@ class AuthController extends Controller
 
         unset( $_SESSION['fb_access_token']);
 
+        if (isset($_COOKIE['fb_access_cookie'])) {
+            unset($_COOKIE['fb_access_cookie']);
+            setcookie('fb_access_cookie', '', time() - 3600, '/'); // empty value and old timestamp
+        }
+
         return Redirect::to('/'.$page);
     }
 

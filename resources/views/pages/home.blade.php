@@ -81,7 +81,7 @@
         <h3 style="margin-left: 20px; margin-top: 10px;">Bijgewoonde evenementen: {{ $nb_attended_events }}/{{ $nb_passed_events + $nb_active_events}}</h3>
       </div>
       <div class="row">
-        @foreach($upcoming_events as $event)
+        @foreach($possible_attended_events as $event)
           <a href="{{URL::route('event',array('id'=>$event->id))}}">
             <div class="col-md-3 col-xs-6">
               <div>
