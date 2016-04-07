@@ -41,7 +41,7 @@ class EventsController extends Controller
     $data = PagesController::getData();
     $data['events'] = Event::all();
 
-    $data['passed_events'] = Event::where('ended_at', '<', date('Y-m-d   H:i:s'))->get();
+    $data['passed_events'] = Event::where('started_at', '<', date('Y-m-d   H:i:s'))->get();
 
 
 
