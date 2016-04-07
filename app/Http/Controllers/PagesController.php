@@ -140,6 +140,7 @@ class PagesController extends Controller
         $pushed =false;
         $dates = explode("<br>", $ev->excerpt);
         foreach($dates as $date){
+
           $hours = substr($date, 9);
           $hourArr = explode("-", $hours);
 
@@ -161,7 +162,6 @@ class PagesController extends Controller
             if(!$pushed)
               array_push($res, $ev);
             $pushed = true;
-          }
         }
       }
 
@@ -309,6 +309,7 @@ class PagesController extends Controller
         }
 
         if (!isset($_SESSION['fb_access_token'])){
+            echo "session not set";
             return false;
         }
 
@@ -322,9 +323,11 @@ class PagesController extends Controller
             echo 'Graph returned an error: ' . $e->getMessage();
             if ($e->getCode() == 190) {
                 //Access token has expired.
+                echo "expired acces token";
                 unset($_SESSION['fb_access_token']);
                 return false;
             } else {
+                var_dump($e);
                 return false;
             }
             exit;
