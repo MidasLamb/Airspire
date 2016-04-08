@@ -38,24 +38,24 @@ Route::get('construction', function(){
 
 //Info pages -------------------------------------------------------
 
-Route::get('/','PagesController@welcome')->middleware(['auth.dev']);
+Route::get('/','PagesController@welcome');
 
-Route::get('home', 'PagesController@home')->middleware(['auth.dev']);
+Route::get('home', 'PagesController@home');
 
-Route::get('aboutus', 'PagesController@aboutus')->middleware(['auth.dev']);
+Route::get('aboutus', 'PagesController@aboutus');
 
-Route::get('booth', 'PagesController@booth')->middleware(['auth.dev']);
+Route::get('booth', 'PagesController@booth');
 
-Route::get('playthatcard', 'PagesController@playThatCard')->middleware(['auth.dev']);
+Route::get('playthatcard', 'PagesController@playThatCard');
 
 //Events --------------------------------------------------------------
 
-Route::get('events', 'EventsController@events')->middleware(['auth.dev']);
-Route::get('events/{id}', array('as' => 'event','uses' =>'EventsController@event'))->middleware(['auth.dev']);
+Route::get('events', 'EventsController@events');
+Route::get('events/{id}', array('as' => 'event','uses' =>'EventsController@event'));
 
 //Pasport --------------------------------------------------------------
 
-Route::get('pasport', 'EventsController@pasport')->middleware(['auth.dev']);
+Route::get('pasport', 'EventsController@pasport');
 
 //Login ------------------------------------------------------------
 
@@ -70,29 +70,29 @@ Route::get('logout/{page}', 'AuthController@logout')->where('page', '(.*)');
 
 //QR Code --------------------------------------------------------------
 
-Route::get('QRCode', 'PagesController@QRCode')->middleware(['auth.dev']);
-Route::get('QRCode/dev', array('as' => 'DevQRCode','uses' => 'PagesController@devQRCode'));
+Route::get('QRCode', 'PagesController@QRCode');
+Route::get('QRCode/dev', array('as' => 'DevQRCode','uses' => 'PagesController@devQRCode'))->middleware(['auth.dev']);
 Route::get('QRCode/{id}', 'PagesController@developQRCode')->middleware(['auth.dev']);
 
 Route::post('eventattendeces',['middleware' => 'auth.quick', 'uses' => 'DBController@store']);
 
 
-Route::get('events/{hash}/{time}', 'EventsController@eventAttendence')->middleware(['auth.dev']);
+Route::get('events/{hash}/{time}', 'EventsController@eventAttendence');
 
 
 //Albums ---------------------------------------------------------------
 Route::get('/media', array('as' => 'index','uses' => 'AlbumsController@getList'));
-Route::get('/media/createalbum', array('as' => 'create_album_form','uses' => 'AlbumsController@getForm'));
-Route::post('/media/createalbum', array('as' => 'create_album','uses' => 'AlbumsController@postCreate'));
-Route::get('/media/deletealbum/{id}', array('as' => 'delete_album','uses' => 'AlbumsController@getDelete'));
+Route::get('/media/createalbum', array('as' => 'create_album_form','uses' => 'AlbumsController@getForm'))->middleware(['auth.dev']);
+Route::post('/media/createalbum', array('as' => 'create_album','uses' => 'AlbumsController@postCreate'))->middleware(['auth.dev']);
+Route::get('/media/deletealbum/{id}', array('as' => 'delete_album','uses' => 'AlbumsController@getDelete'))->middleware(['auth.dev']);
 Route::get('/media/album/{id}', array('as' => 'show_album','uses' => 'AlbumsController@getAlbum'));
 
-Route::get('/media/addimage/{id}', array('as' => 'add_image','uses' => 'ImageController@getForm'));
-Route::post('/media/addimage', array('as' => 'add_image_to_album','uses' => 'ImageController@postAdd'));
-Route::get('/media/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImageController@getDelete'));
+Route::get('/media/addimage/{id}', array('as' => 'add_image','uses' => 'ImageController@getForm'))->middleware(['auth.dev']);
+Route::post('/media/addimage', array('as' => 'add_image_to_album','uses' => 'ImageController@postAdd'))->middleware(['auth.dev']);
+Route::get('/media/deleteimage/{id}', array('as' => 'delete_image','uses' => 'ImageController@getDelete'))->middleware(['auth.dev']);
 Route::get('/media/image/{id}', array('as' => 'show_image','uses' => 'ImageController@getImage'));
 
-Route::post('/media/moveimage', array('as' => 'move_image', 'uses' => 'ImageController@postMove'));
+Route::post('/media/moveimage', array('as' => 'move_image', 'uses' => 'ImageController@postMove'))->middleware(['auth.dev']);
 
 Route::get('/albums/{id}', array('as' => 'indi','uses' => 'ImageController@indiImage'));
 

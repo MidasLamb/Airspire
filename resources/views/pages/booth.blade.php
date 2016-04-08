@@ -8,7 +8,20 @@
 
 @section('content')
   <h1>Info over het standje</h1>
-  <div id="googlemap" style="width: 300px; height: 400px"></div>
+  <div class="row">
+    <div class="col-xs-3">
+      <h2>Locatie:</h2>
+    </div>
+    <div class="col-xs-9">
+      <div class="thumbnail">
+        <h3>Kaart:</h3>
+        <div id="googlemap" style="width: 100%; height: 400px"></div>
+      </div>
+      <div>
+    </div>
+  </div>
+
+  </div>
     <script>
       var map;
       var langAndLong = {lat: 0, lng: 0};

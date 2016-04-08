@@ -21,6 +21,10 @@ class FBDevAuth
 
       //return $next($request);
 
+      PagesController::fillData();
+      $data = PagesController::getData();
+      $acc_dev = true;
+
       if(PagesController::isValidAccessToken()){
           $response = PagesController::getFBUser();
           $fbid = $response['id'];
@@ -40,14 +44,9 @@ class FBDevAuth
             //echo "User does not exist in database";
           }
 
-      } else {
-        if (!isset($_SESSION['fb_access_token'])){
-          //echo "Token not set";
-        } else {
-          //echo "Not a valid token";
-        }
       }
 
-      return redirect('construction');
+      var_dump($acc_dev);
+      return redirect('home')->with('acc_dev', $acc_dev);
     }
 }
