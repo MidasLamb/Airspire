@@ -35,6 +35,10 @@ class OnlineCheck
         PagesController::fillData(array('id'));
         $data = PagesController::getData();
 
+        if(strcmp($request->path(), "login")==0){
+          return $next($request);
+        }
+
         if(PagesController::isValidAccessToken()){
             $response = PagesController::getFBUser();
             $fbid = $response['id'];
