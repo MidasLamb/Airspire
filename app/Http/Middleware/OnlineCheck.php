@@ -35,7 +35,7 @@ class OnlineCheck
         PagesController::fillData(array('id'));
         $data = PagesController::getData();
 
-        if(strcmp($request->path(), "login")==0){
+        if(strcmp(substr($request->path(), 0,5), "login")==0){
           return $next($request);
         }
 
