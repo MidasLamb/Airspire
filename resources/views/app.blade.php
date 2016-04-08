@@ -245,7 +245,7 @@
 
     function logout(){
 
-        conf = confirm("This will also log you out of Facebook itself, are you sure you want to continue?")
+        conf = confirm("This will also log you out of Facebook itself, are you sure you want to continue?");
         if (conf){
           quickLogout();
         }
@@ -315,23 +315,23 @@
                 <li class=@yield('active-media')><a href="/media">Media</a></li>
                 <li class=@yield('active-booth')><a href="/booth">Standje</a></li>
                 <li class=@yield('active-aboutus')><a href="/aboutus">About us</a></li>
-                <!-- <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right" id="fbt">
-                <li><fb:login-button data-size="xlarge" scope="public_profile,email,user_friends" onlogin="logInWithFacebook();">
-                    </fb:login-button></li>
+                <li>
+                  <div class="hidden-xs" style="margin-top:4px; margin-left: 12px; background-color:white; border-radius: 2px;">
+                    <div style="padding: 2px;">
+                      <fb:login-button data-size="xlarge" scope="public_profile,email,user_friends" onlogin="logInWithFacebook();">
+                      </fb:login-button>
+                    </div>
+                  </div>
+                  <div class="visible-xs" style="margin-left: 12px; width: 129px; background-color:white; border-radius: 3px;">
+                    <div style="padding: 3px;">
+                      <fb:login-button data-size="xlarge" scope="public_profile,email,user_friends" onlogin="logInWithFacebook();">
+                      </fb:login-button>
+                    </div>
+                  </div>
                 </li>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
