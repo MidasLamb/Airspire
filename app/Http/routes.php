@@ -13,7 +13,9 @@
 
 //Dev reroute route
 
+
 use App\Http\Controllers\PagesController;
+
 
 
 Route::get('construction', function(){
@@ -105,3 +107,10 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+//Leftovers:
+Route::get('{page}', function($page){
+  $tr = true;
+  Log::alert('Non-existing page acces: '.$page);
+  return redirect('home')->with('page_acc', $tr);
+})->where('page', '(.*)');

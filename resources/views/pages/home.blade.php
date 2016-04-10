@@ -12,7 +12,12 @@
     <div class="alert alert-danger" role="alert">
       <strong>Je hebt geen toegang tot deze pagina.</strong> Je moet speciale rechten hebben voor toegang tot deze pagina, sorry. We hebben je terug naar de Home-pagina gebracht.
     </div>
-    You tried to acces!
+  @endif
+
+  @if(session('page_acc'))
+    <div class="alert alert-danger" role="alert">
+      <strong>De pagina die je probeert te bezoeken bestaat niet.</strong> We hebben je terug naar de Home-pagina gebracht.
+    </div>
   @endif
   <div>
     <h1>Welkom op de lollige website van PLOEG AIRSPIRE!</h1>
@@ -28,7 +33,7 @@
     </div>
     &nbsp; <br>
     <video width="100%" controls autoplay>
-      <source src="/video/Braumix.mp4" type="video/mp4">
+      <source src="/video/pa.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>

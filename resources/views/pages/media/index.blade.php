@@ -15,7 +15,7 @@
   <h2> Ons promo-filmpje! </h2>
   <div class="thumbnail">
     <video width="100%" controls autoplay>
-      <source src="/video/Braumix.mp4" type="video/mp4">
+      <source src="/video/pa.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>

@@ -451,8 +451,8 @@
               <b><p class="text-right">
                 Created by Midas Lambrichts</br>
                 Contact: midas_lambrichts@hotmail.com</br>
-                Github: <a href="https://github.com/MidasLamb" target="_blank">Github</a></br>
-                LinkedIn: <a href="https://be.linkedin.com/in/midas-lambrichts-507a4b94" target="_blank">LinkedIn</a></br>
+                <a href="https://github.com/MidasLamb" target="_blank">Github</a></br>
+                <a href="https://be.linkedin.com/in/midas-lambrichts-507a4b94" target="_blank">LinkedIn</a></br>
               </p></b>
             </div>
           </div>
@@ -532,8 +532,8 @@
               <b><p class="text-right">
                 Created by Midas Lambrichts</br>
                 midas_lambrichts@hotmail.com</br>
-                Github: <a href="https://github.com/MidasLamb" target="_blank">Github</a></br>
-                LinkedIn: <a href="https://be.linkedin.com/in/midas-lambrichts-507a4b94" target="_blank">LinkedIn</a></br>
+                <a href="https://github.com/MidasLamb" target="_blank">Github</a></br>
+                <a href="https://be.linkedin.com/in/midas-lambrichts-507a4b94" target="_blank">LinkedIn</a></br>
               </p></b>
           </div>
         </div>

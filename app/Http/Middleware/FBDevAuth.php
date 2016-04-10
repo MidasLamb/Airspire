@@ -6,6 +6,7 @@ use Closure;
 use Request;
 use App\Http\Controllers\PagesController;
 use DB;
+use Log;
 
 class FBDevAuth
 {
@@ -39,11 +40,14 @@ class FBDevAuth
               return $next($request);
             } else {
               //echo "You are not allowed";
+              Log::alert("User: ".$fbid." tried to acces an admin page: ")
             }
           } else{
             //echo "User does not exist in database";
           }
 
+      } else {
+        Log::alert("Unidentified user tried to acces an admin page: ")
       }
 
       var_dump($acc_dev);
