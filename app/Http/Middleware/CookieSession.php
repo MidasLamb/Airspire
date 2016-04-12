@@ -29,7 +29,7 @@ class CookieSession
         $cookie_name = "fb_id";
         $cookie_value = $id;
         setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
-      } else if(isset($_COOKIE["fb_id"])&& strlen($_COOKIE["fb_id"]) > 0 && ){
+      } else if(isset($_COOKIE["fb_id"])&& strlen($_COOKIE["fb_id"]) > 0){
 
         $_SESSION['fb_access_token'] =
          DB::table('users')->select()->where("fb_id", "=",$_COOKIE["fb_id"])->first()->access_token;
