@@ -28,7 +28,7 @@ class OnlineCheck
       $day = 12;
       $startDate = date('Y-m-d   H:i:s', mktime($startHour, 0, 0, 4, $day, 2016));
       $now = date('Y-m-d   H:i:s');
-
+      echo   $now;
 
 
       if($startDate > $now){
