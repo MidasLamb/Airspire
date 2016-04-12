@@ -19,7 +19,7 @@
         <div class="col-md-9">
           <div style="margin-left: 10px;">
             <h3>Captain Sam</h3>
-            Met zijn sexy accent is Samuel een Antweirpenoar in hart en ziele. Hij is er dan ook nog steeds rotsvast van overtuigd dat dit het centrum van de wereld is. Deze dikke nek vertrekt volgend jaar naar de andere dikke nekken van Wharton, waar hij zeker op zijn plaats zal zitten. Naast Ekonomika had deze kanjer ook nog een carrière als ex-Prenior bij PEH.
+            Met zijn sexy accent is Samuel een Antweirpenoar in hart en ziele. Hij is er dan ook nog steeds rotsvast van overtuigd dat dit het centrum van de wereld is. Deze dikke nek vertrekt volgend jaar naar de andere dikke nekken van Wharton, waar hij zeker op zijn plaats zal zitten.
           </div>
         </div>
         <div class="col-md-3 visible-xs" style="position: relative; height: 150px; margin-top:15px;">
@@ -121,7 +121,7 @@
         <div class="col-md-9">
           <div style="margin-left: 10px;">
             <h3>Stewardess Mathi</h3>
-            Deze Van  Lintse deerne is na een jaar van eeuwige twijfels en nachtelijke escapades dan eindelijk van straat geraakt. Haar zotte avontuurtjes durven wel eens te leiden tot een vermissing in het park of een sLIPpertje in Ekobar.
+            Deze van Lintse deerne is zeker niet op haar mondje gevallen en deinst niet terug voor een steek meer of minder. Ieder van ons heeft het al mogen voele, diep in ons hart. Een andere specialiteit van haar is dat ze steeds te vinden is voor een gezellig onderonsje overdag, 's avonds komt haar ware party animal-gehalte dan naar boven!
           </div>
         </div>
         <div class="col-md-3 visible-xs" style="position: relative; height: 150px; margin-top:15px;">

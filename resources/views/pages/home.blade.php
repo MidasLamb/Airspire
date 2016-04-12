@@ -32,7 +32,7 @@
       </p>
     </div>
     &nbsp; <br>
-    <video width="100%" controls autoplay>
+    <video width="100%" controls>
       <source src="/video/pa.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -57,6 +57,44 @@
         <p style="margin-left:15px;">Spijtig genoeg zijn er nu geen evenementen bezig :( </p>
       </div>
       @endif
+    </div>
+  </div>
+
+  <div class="thumbnail">
+    <div class="row">
+      <h2 style="margin-left: 20px; margin-top: 10px;">Wedstrijden:</h2>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" style="position: relative;">
+        <h3 style="margin-left: 10px;">Like and share</h3>
+        <div class="lead" style="margin-left:15px;">
+
+            <div style="top: -3px;"
+                  class="fb-like"
+                  data-share="false"
+                  data-href="https://www.facebook.com/PloegAirspire"
+                  data-colorscheme="dark"
+                  data-show-faces="true"
+                  data-layout="button"
+                  style="padding: 7px; border-radius: 5px; background-color:white;">Like</div> onze pagina, <div style="top: -3px;" class="fb-share-button" data-href="https://www.facebook.com/PloegAirspire/posts/463969003801243" data-layout="button">deel</div> ons filmpje en maak kans op een tandem skydive! </br>
+            <div style="margin-left:5px;">
+             Mede mogelijk gemaakt door <a href="https://www.skydivecerfontaine.be/nl/">Skydive Cerfontaine</a>.
+            Bekijk hier zeker al eens een voorproefje:
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+          <video width="85%" controls>
+            <source src="/video/cerf.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <h3 style="margin-left: 10px;">Snapchat</h3>
+        <p style="margin-left:15px;" class="lead">
+           Stuur ons de zotste, grappigste snapchat over je Airspire avonturen en maak kans op een ballonvaart! </br>
+          Mede mogelijk gemaakt door <a href="http://skaai.be/">Skaai</a>.
+        </p>
+      </div>
     </div>
   </div>
 

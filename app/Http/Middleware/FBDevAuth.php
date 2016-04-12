@@ -50,7 +50,6 @@ class FBDevAuth
         Log::alert("Unidentified user tried to acces an admin page: ");
       }
 
-      var_dump($acc_dev);
       return redirect('home')->with('acc_dev', $acc_dev);
     }
 }

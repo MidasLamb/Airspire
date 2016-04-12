@@ -151,9 +151,7 @@ class AuthController extends Controller
 //        // Logged in
 //
         $_SESSION['fb_access_token'] = (string) $accessToken;
-        $cookie_name = "fb_access_cookie";
-        $cookie_value = (string) $accessToken;
-        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
 
         // User is logged in!
 
@@ -164,6 +162,10 @@ class AuthController extends Controller
               'name' => $fb_user['name'],
               'access_token' => (string) $accessToken
         ];
+
+        $cookie_name = "fb_id";
+        $cookie_value = $fb_user['id'];
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 
         if (isset($fb_user['email']))
           $data['email'] = $fb_user['email'];
@@ -266,9 +268,9 @@ class AuthController extends Controller
 
         unset( $_SESSION['fb_access_token']);
 
-        if (isset($_COOKIE['fb_access_cookie'])) {
-            unset($_COOKIE['fb_access_cookie']);
-            setcookie('fb_access_cookie', '', time() - 3600, '/'); // empty value and old timestamp
+        if (isset($_COOKIE['fb_id'])) {
+            unset($_COOKIE['fb_id']);
+            setcookie('fb_id', '', time() - 3600, '/'); // empty value and old timestamp
         }
 
         return Redirect::to('/'.$page);

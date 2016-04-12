@@ -37,6 +37,9 @@ Route::get('construction', function(){
   return view('dev')->with($data);
 });
 
+Route::get('ban', function(){
+  return view('pages/ban');
+});
 
 //Info pages -------------------------------------------------------
 

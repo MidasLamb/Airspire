@@ -399,8 +399,8 @@
                 </a>
               </div>
               <div class="col-xs-2 partner-col">
-                <a href="http://www.basic-italian.be/" target="_blank">
-                  <img class="partner" alt="Basic Italian" src="/partners/basicitalian.jpg">
+                <a href="https://www.facebook.com/burgerfarmleuven" target="_blank">
+                  <img class="partner" alt="BurgerFarm" src="/partners/burgerfarm.jpg">
 
                 </a>
               </div>
@@ -417,10 +417,14 @@
 
             </div>
             <div class="row">
-              <div class="col-xs-1"></div>
               <div class="col-xs-2 partner-col">
                 <a href="https://www.skydivecerfontaine.be/nl/" target="_blank">
                   <img class="partner" alt="Skydive cerfontaine" src="/partners/skydivecerfontaine.png">
+                </a>
+              </div>
+              <div class="col-xs-2 partner-col">
+                <a href="http://skaai.be/" target="_blank">
+                  <img class="partner" alt="Skaai" src="/partners/skaai.png" style="filter: invert(100%);     -webkit-filter: invert(100%);">
                 </a>
               </div>
               <div class="col-xs-2 partner-col">
@@ -482,8 +486,8 @@
               </a>
             </div>
             <div class="col-xs-6 partner-col">
-              <a href="http://www.basic-italian.be/" target="_blank">
-                <img class="partner" alt="Basic Italian" src="/partners/basicitalian.jpg">
+              <a href="https://www.facebook.com/burgerfarmleuven" target="_blank">
+                <img class="partner" alt="BurgerFarm" src="/partners/burgerfarm.jpg">
 
               </a>
             </div>
@@ -522,7 +526,15 @@
                 <img class="partner" alt="Antwerp Airport" src="/partners/antwerpairport.png">
               </a>
             </div>
+            <div class="col-xs-6 partner-col">
+              <a href="http://skaai.be/" target="_blank">
+                <img class="partner" alt="Skaai" src="/partners/skaai.png" style="filter: invert(100%);     -webkit-filter: invert(100%);">
+              </a>
+            </div>
+            <div class= "col-xs-6 partner-col">
+            </div>
           </div>
+
 
           <div class="col-xs-12" style="height: 20px;">
           </div>
