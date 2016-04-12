@@ -25,7 +25,7 @@ class OnlineCheck
     {
 
       $startHour = 20;
-      $day = 12;
+      $day = 13;
       $startDate = date('Y-m-d   H:i:s', mktime($startHour, 0, 0, 4, $day, 2016));
       $now = date('Y-m-d   H:i:s');
 
