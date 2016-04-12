@@ -400,7 +400,7 @@
               </div>
               <div class="col-xs-2 partner-col">
                 <a href="https://www.facebook.com/burgerfarmleuven" target="_blank">
-                  <img class="partner" alt="BurgerFarm" src="/partners/burgerfarm.jpg">
+                  <img class="partner" alt="BurgerFarm" src="/partners/burgerfarm.png">
 
                 </a>
               </div>
@@ -487,7 +487,7 @@
             </div>
             <div class="col-xs-6 partner-col">
               <a href="https://www.facebook.com/burgerfarmleuven" target="_blank">
-                <img class="partner" alt="BurgerFarm" src="/partners/burgerfarm.jpg">
+                <img class="partner" alt="BurgerFarm" src="/partners/burgerfarm.png">
 
               </a>
             </div>
