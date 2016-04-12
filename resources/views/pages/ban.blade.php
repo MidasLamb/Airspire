@@ -17,6 +17,6 @@
 <body>
 
 <div class="alert alert-danger" role="alert">
-  <strong>Je bent geband!</strong><br> Reden: {{ session('message') }}
+  <strong>Je bent geband!</strong><br> Reden: {{ session('message') }} <br> Je kan poeslief aan de goedwillige leden van Ploeg Airspire vragen om terug op de site te mogen.
 </div>
 </body>
