@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Airspire</title>
+        <title>Ploeg Airspire</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <meta property="og:url"                content="http://www.ploegairspire.be" />
+        <meta property="og:type"               content="website" />
+        <meta property="og:title"              content="Ploeg Airspire" />
+        <meta property="og:description"        content="De website van Ploeg Airspire!" />
+        <meta property="og:image"              content="http://www.ploegairspire.be/images/Airspire_wit.png" />
+
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
         <style>
             html, body {
@@ -16,8 +22,9 @@
                 width: 100%;
                 display: table;
                 font-weight: 100;
-                font-family: 'Lato';
+                font-family: 'Montserrat';
                 cursor: pointer; cursor: hand;
+
             }
 
             .container {
@@ -33,8 +40,9 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 80px;
                 opacity: 0;
+                color: #1351b7;
             }
 
             .subtitle {
@@ -89,7 +97,7 @@
 
         <div class="container">
             <div class="content">
-                <div class="title" id="title" >Airspire</div>
+                <div class="title" id="title" ><img src='/images/Airspire_wit.png' style="max-width: 50%;"> </br> <div style= "position: relative; top:-100px;">Verwelkomt u!</div></div>
                 <div class="subtitle" id="subtitle">Click anywhere to continue</div>
             </div>
         </div>

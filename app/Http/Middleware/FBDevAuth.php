@@ -6,6 +6,7 @@ use Closure;
 use Request;
 use App\Http\Controllers\PagesController;
 use DB;
+use Log;
 
 class FBDevAuth
 {
@@ -18,28 +19,37 @@ class FBDevAuth
      */
     public function handle($request, Closure $next)
     {
-      if (!session_id()) {
-          session_start();
-      }
 
-      if(isset($_SESSION['fb_access_token']) && PagesController::isValidAccessToken()){
+      //return $next($request);
+
+      PagesController::fillData();
+      $data = PagesController::getData();
+      $acc_dev = true;
+
+      if(PagesController::isValidAccessToken()){
           $response = PagesController::getFBUser();
           $fbid = $response['id'];
-          try{
-            $testUser = DB::table('users')->select('test_user')->where('fb_id', '=', $fbid)->first();
 
-            if ($testUser != NULL){
-              $isTestUser = $testUser->test_user;
+          $testUser = DB::table('users')->select('test_user')->where('fb_id', '=', $fbid)->first();
 
-              if ($isTestUser){
-                //Allow acces:
-                return $next($request);
-              }
+          if ($testUser != NULL){
+            $isTestUser = $testUser->test_user;
+
+            if ($isTestUser){
+              //Allow acces:
+              return $next($request);
+            } else {
+              //echo "You are not allowed";
+              Log::alert("User: ".$fbid." tried to acces an admin page: ");
             }
-          } catch (Exception $e){
-
+          } else{
+            //echo "User does not exist in database";
           }
+
+      } else {
+        Log::alert("Unidentified user tried to acces an admin page: ");
       }
-      return redirect('construction');
+
+      return redirect('home')->with('acc_dev', $acc_dev);
     }
 }
