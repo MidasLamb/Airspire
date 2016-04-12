@@ -24,8 +24,8 @@ class OnlineCheck
     public function handle($request, Closure $next)
     {
 
-      $startHour = 13;
-      $day = 12;
+      $startHour = 20;
+      $day = 13;
       $startDate = date('Y-m-d   H:i:s', mktime($startHour, 0, 0, 4, $day, 2016));
       $now = date('Y-m-d   H:i:s');
 
