@@ -78,7 +78,9 @@
                   data-layout="button"
                   style="padding: 7px; border-radius: 5px; background-color:white;">Like</div> onze pagina, <div style="top: -3px;" class="fb-share-button" data-href="https://www.facebook.com/PloegAirspire/posts/463969003801243" data-layout="button">deel</div> ons filmpje en maak kans op een tandem skydive! </br>
             <div style="margin-left:5px;">
-             Mede mogelijk gemaakt door <a href="https://www.skydivecerfontaine.be/nl/">Skydive Cerfontaine</a>.
+              <small>
+             Mede mogelijk gemaakt door <a href="https://www.skydivecerfontaine.be/nl/">Skydive Cerfontaine</a>. </br>
+           </small>
             Bekijk hier zeker al eens een voorproefje:
           </div>
         </div>
@@ -91,8 +93,8 @@
         </div>
         <h3 style="margin-left: 10px;">Snapchat</h3>
         <p style="margin-left:15px;" class="lead">
-           Stuur ons de zotste, grappigste snapchat over je Airspire avonturen en maak kans op een ballonvaart! </br>
-          Mede mogelijk gemaakt door <a href="http://skaai.be/">Skaai</a>.
+          Stuur ons de zotste, grappigste snapchat over je Airspire avonturen en maak kans op een ballonvaart! </br>
+          <small>Mede mogelijk gemaakt door <a href="http://skaai.be/">Skaai</a>.</small>
         </p>
       </div>
     </div>
