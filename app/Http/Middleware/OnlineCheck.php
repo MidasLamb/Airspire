@@ -62,6 +62,10 @@ class OnlineCheck
             return redirect("construction");
           }
       } else {
+        //allow access because we are past launch date.
+        if(strcmp($request->path(), "construction")==0){
+          return redirect("/");
+        }
         return $next($request);
       }
 
