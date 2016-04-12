@@ -77,11 +77,13 @@
                   data-show-faces="true"
                   data-layout="button"
                   style="padding: 7px; border-radius: 5px; background-color:white;">Like</div> onze pagina, <div style="top: -3px;" class="fb-share-button" data-href="https://www.facebook.com/PloegAirspire/posts/463969003801243" data-layout="button">deel</div> ons filmpje en maak kans op een tandem skydive! </br>
+
             <div style="margin-left:3px;">
               <small>
              Mede mogelijk gemaakt door <a href="https://www.skydivecerfontaine.be/nl/">Skydive Cerfontaine</a>. </br>
            </small>
            <br>
+
             Bekijk hier zeker al eens een voorproefje:
           </div>
         </div>
