@@ -24,11 +24,10 @@ class OnlineCheck
     public function handle($request, Closure $next)
     {
 
-      $startHour = 12;
+      $startHour = 13;
       $day = 12;
       $startDate = date('Y-m-d   H:i:s', mktime($startHour, 0, 0, 4, $day, 2016));
       $now = date('Y-m-d   H:i:s');
-      echo $startDate < $now;
 
 
       if($startDate > $now){
