@@ -11,7 +11,7 @@
     <meta property="og:image"              content="http://www.ploegairspire.be/images/Airspire_wit.png" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/scripts/bootstrap/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/scripts/bootstrap/css/bootstrap.min.css">
 
 
 
@@ -313,7 +313,7 @@
                 <li class=@yield('active-pasport')><a href="/pasport">Paspoort</a></li>
                 @endif
                 <li class=@yield('active-media')><a href="/media">Media</a></li>
-                <li class=@yield('active-booth')><a href="/booth">Standje</a></li>
+                <!-- <li class=@yield('active-booth')><a href="/booth">Standje</a></li> -->
                 <li class=@yield('active-aboutus')><a href="/aboutus">About us</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" id="fbt">
