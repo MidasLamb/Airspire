@@ -33,7 +33,7 @@
     <a href="{{URL::route('show_album',array('id'=>$album->id))}}">
       <div class="col-lg-4">
         <div class="thumbnail">
-          <img alt="{{$album->name}}" src="/albums/{{$album->cover_image}}">
+          <img alt="{{$album->name}}" src="/albums/{{$album->cover_image}}" style="max-height: 300px;">
           <div class="caption">
             <h3>{{$album->name}}</h3>
             <p>{{$album->description}}</p>
