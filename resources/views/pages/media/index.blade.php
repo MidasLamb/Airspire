@@ -31,7 +31,7 @@
   <div class="row">
     @foreach($albums as $album)
     <a href="{{URL::route('show_album',array('id'=>$album->id))}}">
-      <div class="col-lg-3">
+      <div class="col-lg-4">
         <div class="thumbnail">
           <img alt="{{$album->name}}" src="/albums/{{$album->cover_image}}">
           <div class="caption">
