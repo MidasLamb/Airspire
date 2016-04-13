@@ -1,121 +1,60 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Under development</title>
+    <title>Ploeg Airspire</title>
+
+    <meta property="og:url"                content="http://www.ploegairspire.be" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="Ploeg Airspire" />
+    <meta property="og:description"        content="De website van Ploeg Airspire!" />
+    <meta property="og:image"              content="http://www.ploegairspire.be/images/Airspire_wit.png" />
+
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
     <style>
-
-    </style>
-
-
-</head>
-
-<body>
-
-<script>
-    var loggedInFB = {{ json_encode($loggedin) }};
-
-</script>
-<!-- FB loading javascript sdk-->
-<script>
-
-
-    logInWithFacebook = function() {
-
-        FB.login(function(response) {
-            if (response.authResponse) {
-                //alert('You are logged in & cookie set!');
-                if (navigator.cookieEnabled){
-                  window.location.replace("/login/home");
-                } else {
-                  document.getElementById("token").setAttribute("value", FB.getAuthResponse()['accessToken']);
-                  document.getElementById("loginForm").submit();
-                }
-            } else {
-                alert('User cancelled login or did not fully authorize.');
-            }
-        });
-        return false;
-    };
-
-
-
-
-
-
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : 537393759769009,
-            cookie     : true,  // enable cookies to allow the server to access
-                                // the session
-            xfbml      : true,  // parse social plugins on this page
-            version    : 'v2.2' // use version 2.2
-        });
-
-        checkLogin();
-    };
-
-    function checkLogin() {
-        FB.getLoginStatus(function(response) {
-            if (response.status === 'connected' && loggedInFB) {
-                var element = document.getElementById('fbt');
-                element.innerHTML =  '<li class="dropdown" id="fbd">';
-                element = document.getElementById('fbd');
-                element.innerHTML = 'You are not recognized as a user, the site is only accessible to certified users.';
-            } else {
-                // the user isn't logged in to Facebook or hasn't authenticated the app.
-                //alert("Not Logged in");
-                if(loggedInFB) quickLogout();
-            }
-        });
-    }
-
-    function quickLogout(){
-      FB.logout(function(response) {
-
-      });
-      window.location.replace("/logout/home");
-    }
-
-    function logout(){
-
-        conf = confirm("This will also log you out of Facebook itself, are you sure you want to continue?")
-        if (conf){
-          quickLogout();
+        html, body {
+            height: 100%;
         }
 
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            display: table;
+            font-weight: 100;
+            font-family: 'Montserrat';
+
+        }
+
+        .container {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            color: #161717;
+        }
+
+        .content {
+            text-align: center;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
 
 
 
-    // Load the SDK asynchronously
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-
-</script>
 
 
 
 
 
-
-
-<h2>This site is currently under construction, please log in to continue!</h2>
-<ul class="nav navbar-nav navbar-right" id="fbt">
-    <li><fb:login-button data-size="large" scope="public_profile,email,user_friends" onlogin="logInWithFacebook();">
-        </fb:login-button></li>
-    </li>
-</ul>
-{!! Form::open(array('url' => 'login/home', 'id' => 'loginForm')) !!}
-    {{ Form::hidden('token', '', array('id' => 'token'))}}
-{!! Form::close() !!}
+<div class="container">
+    <div class="content">
+        <h1>De site is nog niet online, nog even geduld!</h1>
+        <h4>Herlaad de pagina over een paar minuten.</h4>
+    </div>
+</div>
 
 
 
