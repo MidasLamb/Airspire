@@ -19,6 +19,13 @@
       <strong>De pagina die je probeert te bezoeken bestaat niet.</strong> We hebben je terug naar de Home-pagina gebracht.
     </div>
   @endif
+
+  @if(!$loggedin && date('Y-m-d   H:i:s', mktime(0, 0, 0, 4, 18, 2016)) > date('Y-m-d   H:i:s'))
+  <div class="alert alert-info" role="alert">
+    <strong><fb:login-button data-size="large" scope="public_profile,email,user_friends" onlogin="logInWithFacebook();">
+    </fb:login-button> met facebook VOOR maandag om een extra kans te maken op de prijs.</strong> </br> Als je je minstens eenmaal hebt ingelogd krijg je een extra kans op de prijs. Per evenement dat je bijwoont op maandag/dinsdag krijg je nog een kans.
+  </div>
+  @endif
   <div>
     <h1>Welkom op de lollige website van PLOEG AIRSPIRE!</h1>
   </div>
