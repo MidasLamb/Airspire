@@ -107,7 +107,7 @@ class EventsController extends Controller
             if ($searchMatch == null){
               $currentTime = round(microtime(true)*1000);
               //If the time difference is more than 3 minutes, it took too long.
-              if (abs($currentTime - $converted_time) < 1000*60*3){
+              if (abs($currentTime - $converted_time) < 1000*60*5){
                 $data['in_time'] = true;
 
                 DB::table('event_attendences')
