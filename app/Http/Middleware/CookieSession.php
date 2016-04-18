@@ -25,7 +25,9 @@ class CookieSession
       }
 
       if(isset($_SESSION['fb_access_token']) && strlen($_SESSION['fb_access_token'])>0 && !isset($_COOKIE["fb_id"])){
-        $id = DB::table('users')->select()->where("access_token", "=",$_SESSION['fb_access_token'])->first()->fb_id;
+        $idt = DB::table('users')->select()->where("access_token", "=",$_SESSION['fb_access_token'])->first();
+        var_dump($idt);
+        $id = $idt->fb_id;
 
 
         $cookie_name = "fb_id";
