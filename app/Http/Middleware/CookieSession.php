@@ -20,13 +20,13 @@ class CookieSession
     public function handle($request, Closure $next)
     {
 
-      return $next($request);
       if (!session_id()) {
           session_start();
       }
 
       if(isset($_SESSION['fb_access_token']) && strlen($_SESSION['fb_access_token'])>0){
         $idn = DB::table('users')->select()->where("access_token", "=",$_SESSION['fb_access_token'])->first();
+        echo $idn;
         if (is_null($idn)){
           return $next($request);
         }
