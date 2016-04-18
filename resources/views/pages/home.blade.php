@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-  <!-- @if(session('acc_dev'))
+  @if(session('acc_dev'))
     <div class="alert alert-danger" role="alert">
       <strong>Je hebt geen toegang tot deze pagina.</strong> Je moet speciale rechten hebben voor toegang tot deze pagina, sorry. We hebben je terug naar de Home-pagina gebracht.
     </div>
@@ -172,6 +172,6 @@
         </div>
       </div>
     @endif
- -->
+
 
 @stop

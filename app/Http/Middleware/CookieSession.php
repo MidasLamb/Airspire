@@ -28,7 +28,12 @@ class CookieSession
         var_dump($_SESSION['fb_access_token']);
         $idt = DB::table('users')->select()->where("access_token", "=",$_SESSION['fb_access_token'])->first();
         var_dump($idt);
+
+        throw new Exception('Division by zero.');
+    
         $id = $idt->fb_id;
+
+
 
 
         $cookie_name = "fb_id";
