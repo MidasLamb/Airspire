@@ -46,7 +46,7 @@ class CookieSession
 
       }
 
-      throw new Exception('Division by zero.');
+      
 
       return $next($request);
     }
