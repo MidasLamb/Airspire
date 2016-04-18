@@ -133,7 +133,7 @@
       </div>
     </div>
 
-  @if($loggedin)
+  <!-- @if($loggedin)
     <div class="thumbnail">
       <div class="row">
         <h3 style="margin-left: 20px; margin-top: 10px;">Bijgewoonde evenementen: {{ $nb_attended_events }}/{{ $nb_passed_events + $nb_active_events}}</h3>
@@ -152,7 +152,7 @@
     </div>
     @else
 
-    @endif
+    @endif -->
 
     @if(count($passed_events)>0)
       <div class="thumbnail">
