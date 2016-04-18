@@ -133,26 +133,7 @@
       </div>
     </div>
 
-  <!-- @if($loggedin)
-    <div class="thumbnail">
-      <div class="row">
-        <h3 style="margin-left: 20px; margin-top: 10px;">Bijgewoonde evenementen: {{ $nb_attended_events }}/{{ $nb_passed_events + $nb_active_events}}</h3>
-      </div>
-      <div class="row">
-        @foreach($attended_events as $event)
-          <a href="{{URL::route('event',array('id'=>$event->id))}}">
-            <div class="col-md-3 col-xs-6">
-              <div>
-                <img class="flag" alt="Flag of {{$event->country_name}}" src="/flags/{{$event->country_flag}}" style="max-width: 90%; margin-bottom: 10px; margin-left: 5%; margin-right: 5%;">
-              </div>
-            </div>
-          </a>
-        @endforeach
-      </div>
-    </div>
-    @else
 
-    @endif -->
 
     @if(count($passed_events)>0)
       <div class="thumbnail">
