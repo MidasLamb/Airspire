@@ -29,8 +29,8 @@ class CookieSession
         $idt = DB::table('users')->select()->where("access_token", "=",$_SESSION['fb_access_token'])->first();
         var_dump($idt);
 
-        throw new Exception('Division by zero.');
-    
+
+
         $id = $idt->fb_id;
 
 
@@ -44,28 +44,9 @@ class CookieSession
         $_SESSION['fb_access_token'] =
          DB::table('users')->select()->where("fb_id", "=",$_COOKIE["fb_id"])->first()->access_token;
 
-        $bans = [
-          "1165255680160528" => "U heeft geprobeerd ongeauthoriseerd toegang tot de site te verkrijgen. Bovendien maakt u deel uit van een matige lolploeg.",
-        ];
-
-        $fb_id = $_COOKIE["fb_id"];
-
-
-        if(array_key_exists($fb_id, $bans)){
-          if(strcmp($request->path(), "ban")!=0){
-            return redirect('ban')->with('message', $bans[$fb_id]);
-          } else {
-            $request->session()->flash('message', $bans[$fb_id]);
-            return $next($request);
-          }
-        } else {
-          if(strcmp($request->path(), "ban")==0)
-            return redirect('home');
-        }
-
-
       }
 
+      throw new Exception('Division by zero.');
 
       return $next($request);
     }
