@@ -188,7 +188,7 @@ class PagesController extends Controller
             $day = 19;
           }
 
-          $startDate = date('Y-m-d   H:i:s', mktime($startHour, 0, 0, 4, $day, 2016));
+          $startDate = date('Y-m-d   H:i:s', mktime($startHour - 2, 0, 0, 4, $day, 2016));
           $now = date('Y-m-d   H:i:s');
 
           if($startDate > $now){
